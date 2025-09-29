@@ -10,25 +10,39 @@ pip install "fastapi[standard]" tropycal cartopy shapely folium
 ```
 
 ## How to run 
+Rcomendamos tener **Python 3.11** o superior
+
 Dentro del proyecto
 ```
 fastapi dev tro.py
 ```
 [Documentacion FastAPI](https://fastapi.tiangolo.com/#run-it)
 
+Una vez que el proyecto esté corriendo, podrás acceder a él a través de tu IP de loopback (generalmente el puerto 8000 por defecto): 
+
+*[http://127.0.0.1:8000](http://127.0.0.1:8000)*
+
+
+
 ## Rutas y llamadas
 
-### "/":
-Obtiene y retorna el nombre de las tormentas activas.
+### `"/data"`
+Obtiene y retorna la lista de **tormentas activas**.
 
-### "/data/{storm_name}":
-Sustituye ***[storm_name]*** por alguno nombre de tormenta que ya sepas, este regresara su informacion resumida, (id, nombre, fecha de inicio, fecha de finalizacion, viento maximo, presion minima), asi como guarda la informacion completa dentro de una carpeta
+### `"/data/{storm_name}"`
+Sustituye **[storm_name]** por el nombre de alguna tormenta activa.  
+Esta ruta devuelve información resumida de la tormenta: **ID, nombre, fecha de inicio, fecha de finalización, viento máximo y presión mínima**, y además guarda la información completa en una carpeta local.
 
-### "/images/{storm_name}":
-Sustituye ***[storm_name]*** por alguno nombre de tormenta que ya sepas, este regresara la imagen grafica para la visulizacion de la tormenta. asi mismo este guardara la imagen dentro de una carpeta
+### `"/images/tormentas"`
+Devuelve una visualización **gráfica de todas las tormentas actuales**.
 
-### "/tormentas/":
-La ruta regresa de manera grafica la visualizacion de todas las tormentas actuales
+### `"/images/{storm_name}"`
+Sustituye **[storm_name]** por el nombre de alguna tormenta activa.  
+Esta ruta devuelve una **imagen gráfica** de la tormenta y la guarda en una carpeta local.
+
+### `"/dynamic/{storm_name}"`
+Sustituye **[storm_name]** por el nombre de alguna tormenta activa.  
+Devuelve un **mapa interactivo** con los puntos graficados correspondientes a la tormenta solicitada.
 
 
 ## Licencia
@@ -36,6 +50,7 @@ La ruta regresa de manera grafica la visualizacion de todas las tormentas actual
 Este proyecto se distribuye bajo la licencia **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)**.
 
 **Autores:**
+
 Pedro Mendoza (ElEmLLi)
 
 

@@ -6,7 +6,11 @@ Tropycal_API es un proyecto desarrollado en python con el objetivo de hacer una 
 ## Librerias y Dependencias
 
 ```
+<<<<<<< HEAD
 pip install "fastapi[standard]" tropycal cartopy shapely folium
+=======
+pip install "fastapi[standard]" tropycal cartopy shapely
+>>>>>>> 35b744db2fc4d783e24e675ceb8b14bc42d240ea
 ```
 
 ## How to run 

@@ -4,9 +4,11 @@
 
 
 from fastapi.responses import FileResponse
+from fastapi.responses import HTMLResponse
 from tropycal import realtime
 from fastapi import FastAPI
 import datetime
+import folium
 import json
 import os
 
@@ -20,7 +22,6 @@ def datetimestring():
 	now = datetime.datetime.now()
 	return now.strftime("%Y_%m_%d")
 
-
 def data_diccionario(data_storm):
     dic_data_storm = {
         "id": data_storm["id"],
@@ -31,10 +32,19 @@ def data_diccionario(data_storm):
         "min_mslp": int(min(data_storm["mslp"]))}
     return dic_data_storm
 
+def get_color(vmax):
+        if vmax < 34: return "blue" 
+        elif vmax < 64: return "green"
+        elif vmax < 83: return "yellow"
+        elif vmax < 96: return "orange"
+        elif vmax < 113: return "red"
+        elif vmax < 137: return "purple"
+        else: return "black"
 
-# Rutas ------------------------------------------------------------------
 
-@app.get("/")
+# Rutas de tormentas totales ------------------------------------------------------------------
+
+@app.get("/data")
 def get_storms():
     fecha = datetimestring()
     dir = os.path.join("data", "json", fecha, "Tormentas")
@@ -45,8 +55,7 @@ def get_storms():
     if os.path.exists(filepath):
         with open(filepath, "r") as archivo:
             data_storm = json.load(archivo)
-        return {"Info Tormentas": data_storm}
-
+        return data_storm
 
     realtime_obj = realtime.Realtime()
     lista_tormentas = realtime_obj.list_active_storms()
@@ -55,13 +64,32 @@ def get_storms():
     with open(filepath, "w") as archivo:
         json.dump(tormentas, archivo, indent=3, default=str)
 
-    return {"storm": tormentas}
+    return (tormentas)
 
+
+@app.get("/images/tormentas")
+def get_all_storms():
+    fecha = datetimestring()
+    dir = os.path.join("data", "images", fecha, "Tormentas")
+    os.makedirs(dir, exist_ok=True)
+
+    filename = f"image_tormentas.png"
+    filepath = os.path.join(dir, filename)
+
+    if os.path.exists(filepath):
+        return FileResponse(filepath, media_type="image/png")
+
+    realtime_obj = realtime.Realtime()
+    realtime_obj.plot_summary(save_path=filepath)
+
+    return FileResponse(filepath, media_type="image/png")
+
+
+# Rutas de tormentas especificas ------------------------------------------------------------------
 
 @app.get("/data/{storm_name}")
 def get_data(storm_name: str):
     fecha = datetimestring()
-
     dir = os.path.join("data", "json", fecha, storm_name)
     os.makedirs(dir, exist_ok=True)
     
@@ -85,28 +113,65 @@ def get_data(storm_name: str):
     return {"Info Tormenta": data_storm}
 
 
-@app.get("/tormentas/")
-def get_all_storms():
-    path = os.path.join("storms", "summary.png")
-
-    if not os.path.exists(path):
-        realtime_obj = realtime.Realtime()
-        realtime_obj.plot_summary(save_path=path)
-        return FileResponse(path, media_type="image/png")
-
-    return FileResponse(path, media_type="image/png")
-
-
 @app.get("/images/{storm_name}")
 def get_storm_image(storm_name: str):
+    fecha = datetimestring()
+    dir = os.path.join("data", "images", fecha, storm_name)
+    os.makedirs(dir, exist_ok=True)
+
     filename = f"{storm_name}.png"
-    path = os.path.join("storms", filename)
+    filepath = os.path.join("storms", filename)
 
-    if not os.path.exists(path):
-        realtime_obj = realtime.Realtime()
-        storm = realtime_obj.get_storm(storm_name)
-        storm.plot_forecast_realtime(save_path=path)
+    if not os.path.exists(filepath):
+        return FileResponse(filepath, media_type="image/png")
 
-        return FileResponse(path, media_type="image/png")
+    realtime_obj = realtime.Realtime()
+    storm = realtime_obj.get_storm(storm_name)
+    storm.plot_forecast_realtime(save_path=filepath)
 
-    return FileResponse(path, media_type="image/png")
+    return FileResponse(filepath, media_type="image/png")
+
+
+# En proceso ------------------------------------------------------------------
+
+@app.get("/dynamic/{storm_name}")
+def prueba(storm_name: str):
+    fecha = datetimestring()
+    dir = os.path.join("data", "dynamic", fecha, storm_name)
+    os.makedirs(dir, exist_ok=True)
+
+    filename = f"{storm_name}.html"
+    filepath = os.path.join(dir, filename)
+
+    if os.path.exists(filepath):
+        with open(filepath, "r", encoding="utf-8") as file:
+            html_content = file.read()
+        return HTMLResponse(content=html_content, status_code=200)
+
+    realtime_obj = realtime.Realtime()
+    storm = realtime_obj.get_storm(storm_name)
+    tormenta = storm.to_dict()
+    m = folium.Map(location=[tormenta["lat"][0], tormenta["lon"][0]], zoom_start=5)
+
+    for i in range(len(tormenta["time"])):
+        folium.CircleMarker(
+            location=[tormenta["lat"][i], tormenta["lon"][i]],
+            radius=5,
+            color=get_color(tormenta["vmax"][i]),
+            fill=True,
+            popup=(
+                f"<b>{tormenta['name']}</b><br>"
+                f"Fecha: {tormenta['time'][i]}<br>"
+                f"Viento: {tormenta['vmax'][i]} kt<br>"
+                f"Presión: {tormenta['mslp'][i]} hPa"
+            )
+        ).add_to(m)
+
+    coords = list(zip(tormenta["lat"], tormenta["lon"]))
+    folium.PolyLine(coords, color="gray", weight=2.5, opacity=0.7).add_to(m)
+
+    m.save(filepath)
+    with open(filepath, "r", encoding="utf-8") as file:
+        html_content = file.read()
+
+    return HTMLResponse(content=html_content, status_code=200)

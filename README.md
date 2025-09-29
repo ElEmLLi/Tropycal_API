@@ -1,7 +1,7 @@
 # Tropycal_API
 
-##  Intruccion
-Tropycal_API es un proyecto desarrollado en python con el objetivo de hacer una API que permita obtener datos de tormentas y huracanes de la NHC, usando como base la libreria Tropycal.
+##  Introduccion
+Tropycal_API es un proyecto desarrollado en python con el objetivo de hacer una API que permita obtener datos de tormentas y huracanes obteneidos por la NHC, usando como base la libreria [Tropycal](https://tropycal.github.io/tropycal/).
 
 ## Librerias y Dependencias
 

@@ -139,9 +139,22 @@ def prueba(storm_name: str):
     fecha = datetimestring()
     dir = os.path.join("data", "dynamic", fecha, storm_name)
     os.makedirs(dir, exist_ok=True)
+    print(fecha)
 
     filename = f"{storm_name}.html"
     filepath = os.path.join(dir, filename)
+    json_path = os.path.join("data","json", fecha, "Tormentas", "data_tormentas.json")
+
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+        nombres_tormentas = data.get("Info Tormentas", [])
+
+    if storm_name not in nombres_tormentas:
+        return HTMLResponse(
+            content=f"<h2>No existe tormenta con nombre {storm_name}</h2>",
+            status_code=404
+        )
+
 
     if os.path.exists(filepath):
         with open(filepath, "r", encoding="utf-8") as file:

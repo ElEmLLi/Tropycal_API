@@ -9,6 +9,9 @@ Tropycal_API es un proyecto desarrollado en python con el objetivo de hacer una 
 pip install "fastapi[standard]" tropycal cartopy shapely folium
 ```
 
+[FastAPI](https://fastapi.tiangolo.com/#run-it)  
+[Folium](https://python-visualization.github.io/folium/latest/)
+
 ## How to run 
 Rcomendamos tener **Python 3.11** o superior
 
@@ -21,8 +24,6 @@ fastapi dev tro.py
 Una vez que el proyecto esté corriendo, podrás acceder a él a través de tu IP de loopback (generalmente el puerto 8000 por defecto): 
 
 *[http://127.0.0.1:8000](http://127.0.0.1:8000)*
-
-
 
 ## Rutas y llamadas
 
@@ -44,19 +45,21 @@ Esta ruta devuelve una **imagen gráfica** de la tormenta y la guarda en una car
 Sustituye **[storm_name]** por el nombre de alguna tormenta activa.  
 Devuelve un **mapa interactivo** con los puntos graficados correspondientes a la tormenta solicitada.
 
-
 ## Licencia
-
 Este proyecto se distribuye bajo la licencia **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)**.
 
-**Autores:**
-
+**Autores:**  
 Pedro Mendoza (ElEmLLi)
 
-
 Eres libre de usar, modificar y distribuir esta obra, incluso con fines comerciales, siempre y cuando se reconozca la autoría original.
-
 [Licencia CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es)
+
+## Funcionalidades a incorporar
+* Incorporacion de Logs para el almacenamiento de solicitudes y errores 
+* Mejora de creacion de mapa con Folium para visulizacion de prediccion 
+* Incorporar hora a la solicitud de data 
+* Agregar animacion de trayectoria
 
 ## Soporte 
 Actulamente el proyecto se encuentra en desarrollo. Cualquier duda o sugerencia al correo especficiado de los autores
+

@@ -1,6 +1,5 @@
 # Copyright (c) [2025]
-# [Pedro Mendoza]
-# []
+# [Pedro Mendoza, Bruno Goñi, Emiliano Sánchez, Valentina Tejeda]
 
 
 from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse
@@ -11,15 +10,27 @@ import folium
 import json
 import os
 
-
 app = FastAPI()
-
 
 # Funciones ------------------------------------------------------------------
 
-def datetimestring():
+def datestring():
 	now = datetime.datetime.now()
 	return now.strftime("%Y_%m_%d")
+
+def timestring():
+	now = datetime.datetime.now()
+	return now.strftime("%H_%M_%S")
+
+def calcular_rango_hora(hora):
+	if hora >= 6 and hora <= 305: return "00_00"
+	elif hora >= 306 and hora <= 605: return "03_00"
+	elif hora >= 606 and hora <= 905: return "06_00"
+	elif hora >= 906 and hora <= 1205: return "09_00"
+	elif hora >= 1206 and hora <= 1505: return "12_00"
+	elif hora >= 1506 and hora <= 1805: return "15_00"
+	elif hora >= 1806 and hora <= 2105: return "18_00"
+	else: return "21_00"
 
 def data_diccionario(data_storm):
     dic_data_storm = {
@@ -41,9 +52,10 @@ def get_color(vmax):
         else: return "black"
 
 def verificar_tormenta(storm_name, fecha):
-    dir = os.path.join("data", "json", fecha, "Tormentas")
+    dir = os.path.join("data", fecha, "Tormentas")
     os.makedirs(dir, exist_ok=True)
-    filename = f"data_tormentas.json"
+    hora = calcular_rango_hora(int(timestring()))
+    filename = f"{hora}.json"
     filepath = os.path.join(dir, filename)
 
     if os.path.exists(filepath):
@@ -66,15 +78,15 @@ def verificar_tormenta(storm_name, fecha):
     return False
 
 
-
 # Rutas de tormentas totales ------------------------------------------------------------------
 
 @app.get("/data")
 def get_storms():
-    fecha = datetimestring()
-    dir = os.path.join("data", "json", fecha, "Tormentas")
+    fecha = datestring()
+    dir = os.path.join("data", fecha, "Tormentas")
     os.makedirs(dir, exist_ok=True)
-    filename = f"data_tormentas.json"
+    hora = calcular_rango_hora(int(timestring()))
+    filename = f"{hora}.json"
     filepath = os.path.join(dir, filename)
 
     if os.path.exists(filepath):
@@ -94,11 +106,11 @@ def get_storms():
 
 @app.get("/images/tormentas")
 def get_all_storms():
-    fecha = datetimestring()
-    dir = os.path.join("data", "images", fecha, "Tormentas")
+    fecha = datestring()
+    dir = os.path.join("data", fecha, "Tormentas")
     os.makedirs(dir, exist_ok=True)
-
-    filename = f"image_tormentas.png"
+    hora = calcular_rango_hora(int(timestring()))
+    filename = f"{hora}.png"
     filepath = os.path.join(dir, filename)
 
     if os.path.exists(filepath):
@@ -109,22 +121,21 @@ def get_all_storms():
 
     return FileResponse(filepath, media_type="image/png")
 
-
 # Rutas de tormentas especificas ------------------------------------------------------------------
 
 @app.get("/data/{storm_name}")
 def get_data(storm_name: str):
-    fecha = datetimestring()
+    fecha = datestring()
     if not verificar_tormenta(storm_name, fecha):
         return PlainTextResponse(
             content=f"No existe tormenta con el nombre {storm_name}",
             status_code=404)
 
 
-    dir = os.path.join("data", "json", fecha, storm_name)
+    dir = os.path.join("data", fecha, storm_name)
     os.makedirs(dir, exist_ok=True)
-    
-    filename = f"data_{storm_name}.json"
+    hora = calcular_rango_hora(int(timestring()))
+    filename = f"{hora}.json"
     filepath = os.path.join(dir, filename)
 
     if os.path.exists(filepath):
@@ -146,16 +157,16 @@ def get_data(storm_name: str):
 
 @app.get("/images/{storm_name}")
 def get_storm_image(storm_name: str):
-    fecha = datetimestring()
+    fecha = datestring()
     if not verificar_tormenta(storm_name, fecha):
         return PlainTextResponse(
             content=f"No existe tormenta con el nombre {storm_name}",
             status_code=404)
     
-    dir = os.path.join("data", "images", fecha, storm_name)
+    dir = os.path.join("data", fecha, storm_name)
     os.makedirs(dir, exist_ok=True)
-
-    filename = f"{storm_name}.png"
+    hora = calcular_rango_hora(int(timestring()))
+    filename = f"{hora}.png"
     filepath = os.path.join(dir, filename)
 
     if os.path.exists(filepath):
@@ -170,15 +181,16 @@ def get_storm_image(storm_name: str):
 
 @app.get("/dynamic/{storm_name}")
 def prueba(storm_name: str):
-    fecha = datetimestring()
+    fecha = datestring()
     if not verificar_tormenta(storm_name, fecha):
         return PlainTextResponse(
             content=f"No existe tormenta con el nombre {storm_name}",
             status_code=404)
 
-    dir = os.path.join("data", "dynamic", fecha, storm_name)
+    dir = os.path.join("data", fecha, storm_name)
     os.makedirs(dir, exist_ok=True)
-    filename = f"{storm_name}.html"
+    hora = calcular_rango_hora(int(timestring()))
+    filename = f"{hora}.html"
     filepath = os.path.join(dir, filename)
 
     if os.path.exists(filepath):

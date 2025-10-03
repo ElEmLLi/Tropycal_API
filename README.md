@@ -50,8 +50,8 @@ Este proyecto se distribuye bajo la licencia **Creative Commons Atribución 4.0 
 
 **Autores:**  
 Pedro Mendoza (ElEmLLi)  
-Bruno Goñi (bgoni04)
-Emiliano Sánchez (emisanzmor)
+Bruno Goñi (bgoni04)  
+Emiliano Sánchez (emisanzmor)  
 Valentina Tejeda (Shinevenbrighter)
 
 Eres libre de usar, modificar y distribuir esta obra, incluso con fines comerciales, siempre y cuando se reconozca la autoría original.

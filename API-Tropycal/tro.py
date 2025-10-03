@@ -20,7 +20,7 @@ def datestring():
 
 def timestring():
 	now = datetime.datetime.now()
-	return now.strftime("%H_%M_%S")
+	return now.strftime("%H_%M")
 
 def calcular_rango_hora(hora):
 	if hora >= 6 and hora <= 305: return "00_00"

@@ -1,0 +1,92 @@
+{
+   "id": "EP992025",
+   "operational_id": "EP992025",
+   "name": "99E",
+   "year": 2025,
+   "season": 2025,
+   "basin": "east_pacific",
+   "source_info": "NHC Hurricane Database",
+   "realtime": true,
+   "invest": true,
+   "source_method": "NHC's Automated Tropical Cyclone Forecasting System (ATCF)",
+   "source_url": "https://ftp.nhc.noaa.gov/atcf/btk/",
+   "source": "hurdat",
+   "jtwc_source": "N/A",
+   "time": [
+      "2025-10-01 18:00:00",
+      "2025-10-02 00:00:00",
+      "2025-10-02 06:00:00",
+      "2025-10-02 12:00:00",
+      "2025-10-02 18:00:00",
+      "2025-10-03 00:00:00"
+   ],
+   "extra_obs": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+   ],
+   "special": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+   ],
+   "type": [
+      "DB",
+      "DB",
+      "DB",
+      "DB",
+      "DB",
+      "DB"
+   ],
+   "lat": [
+      12.0,
+      12.1,
+      12.2,
+      12.3,
+      12.4,
+      12.5
+   ],
+   "lon": [
+      -99.5,
+      -100.3,
+      -100.8,
+      -101.4,
+      -102.0,
+      -102.5
+   ],
+   "vmax": [
+      15,
+      15,
+      20,
+      20,
+      20,
+      20
+   ],
+   "mslp": [
+      1010,
+      1010,
+      1009,
+      1009,
+      1009,
+      1009
+   ],
+   "wmo_basin": [
+      "east_pacific",
+      "east_pacific",
+      "east_pacific",
+      "east_pacific",
+      "east_pacific",
+      "east_pacific"
+   ],
+   "ace": 0.0,
+   "prob_2day": "80%",
+   "prob_7day": "90%",
+   "risk_2day": "High",
+   "risk_7day": "High"
+}

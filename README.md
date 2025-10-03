@@ -45,18 +45,6 @@ Esta ruta devuelve una **imagen gráfica** de la tormenta y la guarda en una car
 Sustituye **[storm_name]** por el nombre de alguna tormenta activa.  
 Devuelve un **mapa interactivo** con los puntos graficados correspondientes a la tormenta solicitada.
 
-## Licencia
-Este proyecto se distribuye bajo la licencia **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)**.
-
-**Autores:**  
-Pedro Mendoza (ElEmLLi)  
-Bruno Goñi (bgoni04)  
-Emiliano Sánchez (emisanzmor)  
-Valentina Tejeda (Shinevenbrighter)
-
-Eres libre de usar, modificar y distribuir esta obra, incluso con fines comerciales, siempre y cuando se reconozca la autoría original.
-[Licencia CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es)
-
 ## Ultimas novedades 
 * Hemos arreglado la busqueda de tormentas no existentes
 * Hemos ajustado los path para guardar la informacion, menos redundante y mas conjunta segun la tormenta
@@ -65,9 +53,7 @@ Eres libre de usar, modificar y distribuir esta obra, incluso con fines comercia
 ## Funcionalidades a incorporar
 * Incorporacion de Logs para el almacenamiento de solicitudes y errores 
 * Mejora de creacion de mapa con Folium para visulizacion de prediccion 
-* Incorporar hora a la solicitud de data 
 * Manejo de errores
 
 ## Soporte 
 Actualmente el proyecto se encuentra en desarrollo. Cualquier duda o sugerencia al correo especficiado de los autores
-

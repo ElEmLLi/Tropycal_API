@@ -49,17 +49,25 @@ Devuelve un **mapa interactivo** con los puntos graficados correspondientes a la
 Este proyecto se distribuye bajo la licencia **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)**.
 
 **Autores:**  
-Pedro Mendoza (ElEmLLi)
+Pedro Mendoza (ElEmLLi)  
+Bruno Goñi (bgoni04)
+Emiliano Sánchez (emisanzmor)
+Valentina Tejeda (Shinevenbrighter)
 
 Eres libre de usar, modificar y distribuir esta obra, incluso con fines comerciales, siempre y cuando se reconozca la autoría original.
 [Licencia CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es)
+
+## Ultimas novedades 
+* Hemos arreglado la busqueda de tormentas no existentes
+* Hemos ajustado los path para guardar la informacion, menos redundante y mas conjunta segun la tormenta
+* Se agrego la obtencion de hora para ubicar la informacion solicitada
 
 ## Funcionalidades a incorporar
 * Incorporacion de Logs para el almacenamiento de solicitudes y errores 
 * Mejora de creacion de mapa con Folium para visulizacion de prediccion 
 * Incorporar hora a la solicitud de data 
-* Agregar animacion de trayectoria
+* Manejo de errores
 
 ## Soporte 
-Actulamente el proyecto se encuentra en desarrollo. Cualquier duda o sugerencia al correo especficiado de los autores
+Actualmente el proyecto se encuentra en desarrollo. Cualquier duda o sugerencia al correo especficiado de los autores
 

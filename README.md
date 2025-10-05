@@ -17,13 +17,23 @@ Rcomendamos tener **Python 3.11** o superior
 
 Dentro del proyecto
 ```
-fastapi dev tro.py
+uvicorn tro:app
 ```
 [Documentacion FastAPI](https://fastapi.tiangolo.com/#run-it)
 
 Una vez que el proyecto esté corriendo, podrás acceder a él a través de tu IP de loopback (generalmente el puerto 8000 por defecto): 
 
 *[http://127.0.0.1:8000](http://127.0.0.1:8000)*
+
+Puedes abrir tu host agregando
+```
+--host tu-IP
+```
+
+Puedes escoger el puerto agregando
+```
+--port [numero de puerto]
+```
 
 ## Rutas y llamadas
 
@@ -46,14 +56,17 @@ Sustituye **[storm_name]** por el nombre de alguna tormenta activa.
 Devuelve un **mapa interactivo** con los puntos graficados correspondientes a la tormenta solicitada.
 
 ## Ultimas novedades 
-* Hemos arreglado la busqueda de tormentas no existentes
 * Hemos ajustado los path para guardar la informacion, menos redundante y mas conjunta segun la tormenta
+* La hora obtenida se ajusta segun el rango de obtencion de informacion
 * Se agrego la obtencion de hora para ubicar la informacion solicitada
+* Hemos arreglado la busqueda de tormentas no existentes
+* Incorporacion de Logs de informacion y de errores
+* Solucion de manejo de errores
 
 ## Funcionalidades a incorporar
-* Incorporacion de Logs para el almacenamiento de solicitudes y errores 
-* Mejora de creacion de mapa con Folium para visulizacion de prediccion 
-* Manejo de errores
+* Agregar un archivo .sh encargado de hacer la solicitud y recopilar la informacion 
+* Mejora de creacion de mapa con Folium para visulizacion de prediccion
+* Mejora de formato de mapa con Folium
 
 ## Soporte 
 Actualmente el proyecto se encuentra en desarrollo. Cualquier duda o sugerencia al correo especficiado de los autores

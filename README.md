@@ -15,7 +15,7 @@ pip install "fastapi[standard]" tropycal cartopy shapely folium
 ## How to run 
 Rcomendamos tener **Python 3.11** o superior
 
-Dentro del proyecto
+Ingresa a la carpeta /API-Tropycal, y en terminal ejecuta
 ```
 uvicorn tro:app
 ```
@@ -55,18 +55,20 @@ Esta ruta devuelve una **imagen gráfica** de la tormenta y la guarda en una car
 Sustituye **[storm_name]** por el nombre de alguna tormenta activa.  
 Devuelve un **mapa interactivo** con los puntos graficados correspondientes a la tormenta solicitada.
 
+### `"/data_date/{date}"`
+En un formato ***año_mes_dia*** para **[date]**,  te regresa la lista de tormentas que registro a la primera hora (00:00), datos otorgada por la NHC.
+
+### `"/data_date/{date}/{storm_name}"`
+En un formato ***año_mes_dia*** para **[date]**,  y el id de la tormenta para **[storm_name]**, te regresa la información de la tormenta solicitada del dia solicitado, estos de la primeraa hora (00:00) de datos otorgada por la NHC.
+
 ## Ultimas novedades 
-* Hemos ajustado los path para guardar la informacion, menos redundante y mas conjunta segun la tormenta
-* La hora obtenida se ajusta segun el rango de obtencion de informacion
-* Se agrego la obtencion de hora para ubicar la informacion solicitada
-* Hemos arreglado la busqueda de tormentas no existentes
-* Incorporacion de Logs de informacion y de errores
-* Solucion de manejo de errores
+* Incorporamos la solicitud de lista de tormentas por fecha
+* Incorporamos la solicitud de datos de tormenta especifica, otorgando la fecha y su id
+* Incorporamos la ruta de prediccion de la tormenta al mapa generado con folium
 
 ## Funcionalidades a incorporar
-* Agregar un archivo .sh encargado de hacer la solicitud y recopilar la informacion 
-* Mejora de creacion de mapa con Folium para visulizacion de prediccion
-* Mejora de formato de mapa con Folium
+* Creacion de cono de incertidumbre para la prediccion
+* Verificacion de formato de fecha
 
 ## Soporte 
 Actualmente el proyecto se encuentra en desarrollo. Cualquier duda o sugerencia al correo especficiado de los autores

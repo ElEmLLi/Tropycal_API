@@ -114,8 +114,8 @@ def get_storms():
         log.error(CrearMsgLog(200, "data", exc))
 
 
-@app.get("/images/tormentas")
-def get_all_storms():
+@app.get("/images")
+def get_all_storms_map():
     try:
         fecha = datestring()
         dir = os.path.join("data", fecha, "Tormentas")
@@ -125,7 +125,7 @@ def get_all_storms():
         filepath = os.path.join(dir, filename)
 
         if os.path.exists(filepath):
-            log.info(CrearMsgLog(200, "images/tormentas", "Successful request"))
+            log.info(CrearMsgLog(200, "images", "Successful request"))
             return FileResponse(filepath, media_type="image/png")
 
         realtime_obj = realtime.Realtime()
@@ -141,7 +141,7 @@ def get_all_storms():
 # Rutas de tormentas especificas ------------------------------------------------------------------
 
 @app.get("/data/{storm_name}")
-def get_data(storm_name: str):
+def get_data_storm(storm_name: str):
     try:
         fecha = datestring()
         if not verificar_tormenta(storm_name, fecha):
@@ -180,7 +180,7 @@ def get_data(storm_name: str):
 
 
 @app.get("/images/{storm_name}")
-def get_storm_image(storm_name: str):
+def get_storm_map_image(storm_name: str):
     try:
         fecha = datestring()
         if not verificar_tormenta(storm_name, fecha):
@@ -211,7 +211,7 @@ def get_storm_image(storm_name: str):
 
 
 @app.get("/dynamic/{storm_name}")
-def prueba(storm_name: str):
+def dynamic_strom_map(storm_name: str):
     try:
         fecha = datestring()
         if not verificar_tormenta(storm_name, fecha):
@@ -232,10 +232,11 @@ def prueba(storm_name: str):
             log.info(CrearMsgLog(200, f"dynamic/{storm_name}", "Successful request"))
             return HTMLResponse(content=html_content, status_code=200)
 
+        # crear tormenta dynamica con folium -----------------------------------------------
         realtime_obj = realtime.Realtime()
         storm = realtime_obj.get_storm(storm_name)
         tormenta = storm.to_dict()
-        m = folium.Map(location=[tormenta["lat"][0], tormenta["lon"][0]], zoom_start=5)
+        map = folium.Map(location=[tormenta["lat"][0], tormenta["lon"][0]], zoom_start=5)
 
         for i in range(len(tormenta["time"])):
             folium.CircleMarker(
@@ -249,16 +250,80 @@ def prueba(storm_name: str):
                     f"Viento: {tormenta['vmax'][i]} kt<br>"
                     f"Presión: {tormenta['mslp'][i]} hPa"
                 )
-            ).add_to(m)
+            ).add_to(map)
 
         coords = list(zip(tormenta["lat"], tormenta["lon"]))
-        folium.PolyLine(coords, color="gray", weight=2.5, opacity=0.7).add_to(m)
+        folium.PolyLine(coords, color="gray", weight=2.5, opacity=0.7).add_to(map)
 
-        m.save(filepath)
+        folium.Marker(location=[tormenta["lat"][-1], tormenta["lon"][-1]], 
+                      popup=folium.Popup("Ubicacion actual de la tormenta", parse_html=True, max_width=100)
+        ).add_to(map)
+
+        prediccion_tormenta = storm.get_forecast_realtime()
+
+        for i in range(len(prediccion_tormenta["fhr"])):
+            folium.CircleMarker(
+                location=[prediccion_tormenta["lat"][i], prediccion_tormenta["lon"][i]],
+                radius=5,
+                color=get_color(prediccion_tormenta["vmax"][i]),
+                fill=True,
+                dashArray='3, 3',
+                popup=(
+                    f"<b>{tormenta['name']} - Prediccion</b><br>"
+                    f"Proximas: {prediccion_tormenta['fhr'][i]} horas<br>"
+                    f"Viento: {prediccion_tormenta['vmax'][i]} kt<br>"
+                    f"Presión: {prediccion_tormenta['mslp'][i]} hPa"
+                )
+            ).add_to(map)
+
+        coords = list(zip(prediccion_tormenta["lat"], prediccion_tormenta["lon"]))
+        folium.PolyLine(coords, color="red", weight=2.5, opacity=0.7, dashArray='3, 3',).add_to(map)
+
+        map.save(filepath)
         with open(filepath, "r", encoding="utf-8") as file:
             html_content = file.read()
 
         log.info(CrearMsgLog(200, f"dynamic/{storm_name}", "Successful request"))
         return HTMLResponse(content=html_content, status_code=200)
+    
     except Exception as exc:
         log.error(CrearMsgLog(404, f"dynamic/{storm_name}", exc))
+
+# Rutas por solicitud de fecha ----------------------------------------------------------------------------------
+
+@app.get("/data_date/{fecha}")
+def data_date_storm(fecha: str):
+    try:
+        dir = os.path.join("data", fecha, "Tormentas", "00_00.json")
+
+        if os.path.exists(dir):
+            with open(dir, "r") as archivo:
+                data_storm = json.load(archivo)
+
+            log.info(CrearMsgLog(200, f"/data_date/{fecha}", "Successful request"))
+            return {"Info Tormenta": data_storm}
+        
+        log.info(CrearMsgLog(200, f"/data_date/{fecha}", f"Sin informacion de tormentas el {fecha}"))
+        return PlainTextResponse(content=f"No tengo registro de tormentas el {fecha}", status_code=404)
+
+    except Exception as exc:
+        log.error(CrearMsgLog(404, f"data_date/{fecha}", exc))
+
+@app.get("/data_date/{fecha}/{storm_name}")
+def data_date_storm(fecha: str, storm_name: str):
+    try:
+        dir = os.path.join("data", fecha, storm_name, "00_00.json")
+
+        if os.path.exists(dir):
+            with open(dir, "r") as archivo:
+                data_storm = json.load(archivo)
+                data_storm = data_diccionario(data_storm)
+
+            log.info(CrearMsgLog(200, f"/data_date/{fecha}/{storm_name}", "Successful request"))
+            return {"Info Tormenta": data_storm}
+        
+        log.info(CrearMsgLog(200, f"/data_date/{fecha}/{storm_name}", f"Sin informacion de tormenta {storm_name} el {fecha}"))
+        return PlainTextResponse(content=f"No tengo registro de tormenta {storm_name} el {fecha}", status_code=404)
+
+    except Exception as exc:
+        log.error(CrearMsgLog(404, f"data_date/{fecha}/{storm_name}", exc))

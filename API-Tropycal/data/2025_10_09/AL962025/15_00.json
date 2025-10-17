@@ -1,0 +1,110 @@
+{
+   "id": "AL962025",
+   "operational_id": "AL962025",
+   "name": "96L",
+   "year": 2025,
+   "season": 2025,
+   "basin": "north_atlantic",
+   "source_info": "NHC Hurricane Database",
+   "realtime": true,
+   "invest": true,
+   "source_method": "NHC's Automated Tropical Cyclone Forecasting System (ATCF)",
+   "source_url": "https://ftp.nhc.noaa.gov/atcf/btk/",
+   "source": "hurdat",
+   "jtwc_source": "N/A",
+   "time": [
+      "2025-10-08 00:00:00",
+      "2025-10-08 06:00:00",
+      "2025-10-08 12:00:00",
+      "2025-10-08 18:00:00",
+      "2025-10-09 00:00:00",
+      "2025-10-09 06:00:00",
+      "2025-10-09 12:00:00",
+      "2025-10-09 18:00:00"
+   ],
+   "extra_obs": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+   ],
+   "special": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+   ],
+   "type": [
+      "EX",
+      "EX",
+      "EX",
+      "EX",
+      "EX",
+      "EX",
+      "EX",
+      "EX"
+   ],
+   "lat": [
+      38.2,
+      40.0,
+      41.2,
+      41.4,
+      41.9,
+      43.0,
+      43.4,
+      44.0
+   ],
+   "lon": [
+      -35.8,
+      -36.0,
+      -36.7,
+      -36.8,
+      -35.6,
+      -34.9,
+      -34.6,
+      -34.3
+   ],
+   "vmax": [
+      45,
+      45,
+      45,
+      45,
+      45,
+      45,
+      45,
+      45
+   ],
+   "mslp": [
+      996,
+      996,
+      996,
+      996,
+      996,
+      996,
+      996,
+      996
+   ],
+   "wmo_basin": [
+      "north_atlantic",
+      "north_atlantic",
+      "north_atlantic",
+      "north_atlantic",
+      "north_atlantic",
+      "north_atlantic",
+      "north_atlantic",
+      "north_atlantic"
+   ],
+   "ace": 0.0,
+   "prob_2day": "10%",
+   "prob_7day": "10%",
+   "risk_2day": "Low",
+   "risk_7day": "Low"
+}

@@ -10,9 +10,20 @@ import folium
 import json
 import os
 
+from fastapi.middleware.cors import CORSMiddleware
+
 if not os.path.exists('logs'): os.makedirs('logs')
 log.basicConfig(filename="logs\\Tropycal_API.log", level=log.INFO, format='%(levelname)s: [%(asctime)s] %(message)s')
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # dominio del frontend
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Funciones ------------------------------------------------------------------
 
@@ -136,7 +147,86 @@ def get_all_storms_map():
     
     except Exception as exc:
         log.error(CrearMsgLog(404, "images/tormentas", exc))
-         
+        
+@app.get("/dynamic")
+def dynamic_strom_map(storm_name: str):
+    try:
+        fecha = datestring()
+        if not verificar_tormenta(storm_name, fecha):
+            log.info(CrearMsgLog(200, f"dynamic/{storm_name}", f"No existe tormenta con el nombre {storm_name}"))
+            return PlainTextResponse(
+                content=f"No existe tormenta con el nombre {storm_name}",
+                status_code=404)
+
+
+        dir = os.path.join("data", fecha, "Tormentas")
+        os.makedirs(dir, exist_ok=True)
+        hora = calcular_rango_hora(int(timestring()))
+        filename = f"{hora}.html"
+        filepath = os.path.join(dir, filename)
+
+        if os.path.exists(filepath):
+            with open(filepath, "r", encoding="utf-8") as file:
+                html_content = file.read()
+            log.info(CrearMsgLog(200, f"dynamic/{storm_name}", "Successful request"))
+            return HTMLResponse(content=html_content, status_code=200)
+
+        # crear tormenta dynamica con folium -----------------------------------------------
+        realtime_obj = realtime.Realtime()
+        storm = realtime_obj.get_storm(storm_name)
+        tormenta = storm.to_dict()
+        map = folium.Map(location=[tormenta["lat"][0], tormenta["lon"][0]], zoom_start=5)
+
+        for i in range(len(tormenta["time"])):
+            folium.CircleMarker(
+                location=[tormenta["lat"][i], tormenta["lon"][i]],
+                radius=5,
+                color=get_color(tormenta["vmax"][i]),
+                fill=True,
+                popup=(
+                    f"<b>{tormenta['name']}</b><br>"
+                    f"Fecha: {tormenta['time'][i]}<br>"
+                    f"Viento: {tormenta['vmax'][i]} kt<br>"
+                    f"Presión: {tormenta['mslp'][i]} hPa"
+                )
+            ).add_to(map)
+
+        coords = list(zip(tormenta["lat"], tormenta["lon"]))
+        folium.PolyLine(coords, color="gray", weight=2.5, opacity=0.7).add_to(map)
+
+        folium.Marker(location=[tormenta["lat"][-1], tormenta["lon"][-1]], 
+                      popup=folium.Popup("Ubicacion actual de la tormenta", parse_html=True, max_width=100)
+        ).add_to(map)
+
+        prediccion_tormenta = storm.get_forecast_realtime()
+
+        for i in range(len(prediccion_tormenta["fhr"])):
+            folium.CircleMarker(
+                location=[prediccion_tormenta["lat"][i], prediccion_tormenta["lon"][i]],
+                radius=5,
+                color=get_color(prediccion_tormenta["vmax"][i]),
+                fill=True,
+                dashArray='3, 3',
+                popup=(
+                    f"<b>{tormenta['name']} - Prediccion</b><br>"
+                    f"Proximas: {prediccion_tormenta['fhr'][i]} horas<br>"
+                    f"Viento: {prediccion_tormenta['vmax'][i]} kt<br>"
+                    f"Presión: {prediccion_tormenta['mslp'][i]} hPa"
+                )
+            ).add_to(map)
+
+        coords = list(zip(prediccion_tormenta["lat"], prediccion_tormenta["lon"]))
+        folium.PolyLine(coords, color="red", weight=2.5, opacity=0.7, dashArray='3, 3',).add_to(map)
+
+        map.save(filepath)
+        with open(filepath, "r", encoding="utf-8") as file:
+            html_content = file.read()
+
+        log.info(CrearMsgLog(200, f"dynamic/{storm_name}", "Successful request"))
+        return HTMLResponse(content=html_content, status_code=200)
+    
+    except Exception as exc:
+        log.error(CrearMsgLog(404, f"dynamic/{storm_name}", exc))
 
 # Rutas de tormentas especificas ------------------------------------------------------------------
 

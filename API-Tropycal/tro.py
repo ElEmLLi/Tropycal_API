@@ -2,10 +2,12 @@
 # [Pedro Mendoza, Bruno Goñi, Emiliano Sánchez, Valentina Tejeda, Brisa León]
 
 from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse
+from zoneinfo import ZoneInfo as zi
 from tropycal import realtime
 from fastapi import FastAPI
 import logging as log
 import datetime as dt
+import math as mt
 import folium
 import json
 import os
@@ -35,8 +37,21 @@ def timestring():
 	now = dt.datetime.now()
 	return now.strftime("%H_%M")
 
+def datajsonextra():
+    utc_now = dt.datetime.now(zi("UTC"))
+    mexico_tz = zi("America/Mexico_City")
+    mexico_time = utc_now.astimezone(mexico_tz)
+    print(mexico_time)
+    return mexico_time, mexico_tz
+
 def CrearMsgLog(status_code, ruta, msg) :
     return f"GET /{ruta} HTTP/1.1 {status_code} [{msg}]"
+
+def errornan(lista):
+    lst = []
+    for i in lista: 
+        if not mt.isnan(i) == True: lst.append(i)
+    return int(min(lst))
 
 def calcular_rango_hora(hora):
 	if hora >= 6 and hora <= 305: return "00_00"
@@ -55,7 +70,7 @@ def data_diccionario(data_storm):
         "start_date": str(data_storm["time"][0]),
         "end_date": str(data_storm["time"][-1]),
         "max_wind": int(max(data_storm["vmax"])),
-        "min_mslp": int(min(data_storm["mslp"]))}
+        "min_mslp": errornan(data_storm["mslp"])}
     return dic_data_storm
 
 def get_color(vmax):
@@ -86,6 +101,10 @@ def verificar_tormenta(storm_name, fecha):
     realtime_obj = realtime.Realtime()
     lista_tormentas = realtime_obj.list_active_storms()
     tormentas = {"Info Tormentas": lista_tormentas}
+    mexico_time, mexico_tz = datajsonextra()
+    tormentas["fecha_hora de captura"] = mexico_time
+    tormentas["zona horaria de captura"] = mexico_tz
+
     with open(filepath, "w") as archivo:
         json.dump(tormentas, archivo, indent=3, default=str)
     
@@ -115,6 +134,9 @@ def get_storms():
         realtime_obj = realtime.Realtime()
         lista_tormentas = realtime_obj.list_active_storms()
         tormentas = {"Info Tormentas": lista_tormentas}
+        mexico_time, mexico_tz = datajsonextra()
+        tormentas["fecha_hora de captura"] = mexico_time
+        tormentas["zona horaria de captura"] = mexico_tz
 
         with open(filepath, "w") as archivo:
             json.dump(tormentas, archivo, indent=3, default=str)
@@ -147,9 +169,10 @@ def get_all_storms_map():
     
     except Exception as exc:
         log.error(CrearMsgLog(404, "images/tormentas", exc))
-        
+
+#En desarrollo para generar un mapa dynamic para todas las tormentas ---------------------------
 @app.get("/dynamic")
-def dynamic_strom_map(storm_name: str):
+def dynamic_storm_map(storm_name: str):
     try:
         fecha = datestring()
         if not verificar_tormenta(storm_name, fecha):
@@ -256,7 +279,10 @@ def get_data_storm(storm_name: str):
 
         realtime_obj = realtime.Realtime()
         storm = realtime_obj.get_storm(storm_name)
+        mexico_time, mexico_tz = datajsonextra()
         tormenta = storm.to_dict()
+        tormenta["fecha_hora de captura"] = mexico_time
+        tormenta["zona horaria de captura"] = mexico_tz
         data_storm = data_diccionario(tormenta)
 
         with open(filepath, "w") as archivo:
@@ -301,7 +327,7 @@ def get_storm_map_image(storm_name: str):
 
 
 @app.get("/dynamic/{storm_name}")
-def dynamic_strom_map(storm_name: str):
+def dynamic_strom_name_map(storm_name: str):
     try:
         fecha = datestring()
         if not verificar_tormenta(storm_name, fecha):

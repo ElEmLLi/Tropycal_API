@@ -374,6 +374,38 @@ def get_data_storm(storm_name: str):
         return PlainTextResponse(content=f"Hubo un error al obtener la data", status_code=500)
 
 @app.get("/images/{storm_name}")
+def get_storm_map_images(storm_name: str):
+    try:
+        fecha = datestring()
+        if not verificar_tormenta(storm_name, fecha):
+            log.info(CrearMsgLog(200, f"images/{storm_name}", f"No existe tormenta con el nombre {storm_name}"))
+            return PlainTextResponse(
+                content=f"No existe tormenta con el nombre {storm_name}",
+                status_code=404)
+        
+        dir = os.path.join("data", fecha, storm_name)
+        os.makedirs(dir, exist_ok=True)
+        hora = calcular_rango_hora(int(timestring()))
+        filename = f"{hora}.png"
+        filepath = os.path.join(dir, filename)
+
+        if os.path.exists(filepath):
+            log.info(CrearMsgLog(200, f"images/{storm_name}", "Successful request"))
+            return FileResponse(filepath, media_type="image/png")
+
+        realtime_obj = realtime.Realtime()
+        storm = realtime_obj.get_storm(storm_name)
+            
+        storm.plot_forecast_realtime(save_path=filepath)
+
+        log.info(CrearMsgLog(200, f"images/{storm_name}", "Successful request"))
+        return FileResponse(filepath, media_type="image/png")
+    
+    except Exception as exc:
+        log.error(CrearMsgLog(404, f"images/{storm_name}", exc))
+        return PlainTextResponse(content=f"Hubo un error al obtener la data", status_code=500)
+    
+@app.get("/image/{storm_name}")
 def get_storm_map_image(storm_name: str):
     try:
         fecha = datestring()
@@ -581,6 +613,26 @@ def image_date(date: str, storm_name: str, hour: str):
         content=f"No tengo registro de tormenta {storm_name} el {date} en la hora {hour}",
         status_code=404
     )
+
+@app.get("/data_forecast_actual/{storm_name}")
+def get_data_storm(storm_name: str):
+    try:
+        date = datestring()
+        hour = calcular_rango_hora(int(timestring()))
+        base_dir = os.path.join("data", date, storm_name, f"{hour}_forecast.json")
+
+        if os.path.exists(base_dir):
+            with open(base_dir, "r") as archivo:
+                data_storm = json.load(archivo)
+
+            log.info(CrearMsgLog(200, f"/data_forecast/{storm_name}", "Successful request"))
+            return data_storm
+
+        return PlainTextResponse(content=f"No tengo registro de tormenta {storm_name} el {date}", status_code=404)
+        
+    except Exception as exc:
+        log.error(CrearMsgLog(500, f"data_forecast/{storm_name}", str(exc)))
+        return PlainTextResponse(content="Hubo un error al obtener la data de forecast", status_code=500)
 
 
 @app.get("/data_forecast/{date}/{storm_name}/{hour}")

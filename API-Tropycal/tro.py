@@ -7,8 +7,10 @@ from tropycal import realtime
 from fastapi import FastAPI
 import logging as log
 import datetime as dt
+from PIL import Image
 import math as mt
 import folium
+import glob
 import json
 import os
 
@@ -112,6 +114,11 @@ def verificar_tormenta(storm_name, fecha):
         return True
     return False
 
+# Rutas de origen ----------------------------------------------------------------------------
+
+@app.get("/")
+def read_root():
+    return {"Welcome to Tropycal API"}
 
 # Rutas de tormentas totales ------------------------------------------------------------------
 
@@ -128,8 +135,7 @@ def get_storms():
         if os.path.exists(filepath):
             with open(filepath, "r") as archivo:
                 data_storm = json.load(archivo)
-            log.info(CrearMsgLog(200, "data", "Successful request"))
-            return data_storm
+            return {"Info Tormentas": data_storm["Info Tormentas"]}
 
         realtime_obj = realtime.Realtime()
         lista_tormentas = realtime_obj.list_active_storms()
@@ -141,10 +147,10 @@ def get_storms():
         with open(filepath, "w") as archivo:
             json.dump(tormentas, archivo, indent=3, default=str)
 
-        log.info(CrearMsgLog(200, "data", "Successful request"))
-        return (tormentas)
+        return {"Info Tormentas": tormentas["Info Tormentas"]}
     except Exception as exc:
-        log.error(CrearMsgLog(200, "data", exc))
+        log.error(CrearMsgLog(404, f"data/", exc))
+        return PlainTextResponse(content=f"Hubo un error al obtener la data", status_code=404)
 
 
 @app.get("/images")
@@ -169,87 +175,100 @@ def get_all_storms_map():
     
     except Exception as exc:
         log.error(CrearMsgLog(404, "images/tormentas", exc))
+        return PlainTextResponse(content=f"Hubo un error al obtener la data", status_code=500)
 
-#En desarrollo para generar un mapa dynamic para todas las tormentas ---------------------------
+
 @app.get("/dynamic")
-def dynamic_storm_map(storm_name: str):
+def dynamic_storm_map():
     try:
         fecha = datestring()
-        if not verificar_tormenta(storm_name, fecha):
-            log.info(CrearMsgLog(200, f"dynamic/{storm_name}", f"No existe tormenta con el nombre {storm_name}"))
-            return PlainTextResponse(
-                content=f"No existe tormenta con el nombre {storm_name}",
-                status_code=404)
-
-
         dir = os.path.join("data", fecha, "Tormentas")
         os.makedirs(dir, exist_ok=True)
-        hora = calcular_rango_hora(int(timestring()))
-        filename = f"{hora}.html"
-        filepath = os.path.join(dir, filename)
 
-        if os.path.exists(filepath):
-            with open(filepath, "r", encoding="utf-8") as file:
-                html_content = file.read()
-            log.info(CrearMsgLog(200, f"dynamic/{storm_name}", "Successful request"))
+        hora = calcular_rango_hora(int(timestring()))
+        html_filepath = os.path.join(dir, f"{hora}.html")
+        json_filepath = os.path.join(dir, f"{hora}.json")
+
+        if os.path.exists(html_filepath):
+            with open(html_filepath, "r", encoding="utf-8") as f:
+                html_content = f.read()
+            log.info(CrearMsgLog(200, f"dynamic/", "Successful request"))
             return HTMLResponse(content=html_content, status_code=200)
 
-        # crear tormenta dynamica con folium -----------------------------------------------
         realtime_obj = realtime.Realtime()
-        storm = realtime_obj.get_storm(storm_name)
-        tormenta = storm.to_dict()
-        map = folium.Map(location=[tormenta["lat"][0], tormenta["lon"][0]], zoom_start=5)
 
-        for i in range(len(tormenta["time"])):
-            folium.CircleMarker(
-                location=[tormenta["lat"][i], tormenta["lon"][i]],
-                radius=5,
-                color=get_color(tormenta["vmax"][i]),
-                fill=True,
-                popup=(
-                    f"<b>{tormenta['name']}</b><br>"
-                    f"Fecha: {tormenta['time'][i]}<br>"
-                    f"Viento: {tormenta['vmax'][i]} kt<br>"
-                    f"Presión: {tormenta['mslp'][i]} hPa"
-                )
+        if os.path.exists(json_filepath):
+            with open(json_filepath, "r") as archivo:
+                tormentas = json.load(archivo)
+            data_storm = tormentas["Info Tormentas"]
+
+        else:
+            lista_tormentas = realtime_obj.list_active_storms()
+            mexico_time, mexico_tz = datajsonextra()
+
+            tormentas = {
+                "Info Tormentas": lista_tormentas,
+                "fecha_hora de captura": mexico_time,
+                "zona horaria de captura": mexico_tz
+            }
+            data_storm = lista_tormentas
+
+            with open(json_filepath, "w") as archivo:
+                json.dump(tormentas, archivo, indent=3, default=str)
+
+        map = folium.Map(location=[19.5, 99.4], zoom_start=5)
+
+        if len(data_storm) == 0:
+            log.info(CrearMsgLog(200, f"dynamic/", "Solicitud sin tormentas activas"))
+            return PlainTextResponse(content=f"No hay tormentas activas", status_code=404)
+
+        for id_storm in data_storm:
+            storm = realtime_obj.get_storm(id_storm)
+            tormenta = storm.to_dict()
+
+            coords_hist = list(zip(tormenta["lat"], tormenta["lon"]))
+            folium.PolyLine(coords_hist, color="gray", weight=2.5, opacity=0.7).add_to(map)
+
+            for i in range(len(tormenta["time"])):
+                folium.CircleMarker(
+                    location=[tormenta["lat"][i], tormenta["lon"][i]],
+                    radius=5,
+                    color=get_color(tormenta["vmax"][i]),
+                    fill=True,
+                    popup=f"<b>{tormenta['name']}</b><br>Fecha: {tormenta['time'][i]}<br>Viento: {tormenta['vmax'][i]} kt<br>Presión: {tormenta['mslp'][i]} hPa"
+                ).add_to(map)
+
+            folium.Marker(
+                location=[tormenta["lat"][-1], tormenta["lon"][-1]],
+                popup="Ubicación actual de la tormenta"
             ).add_to(map)
 
-        coords = list(zip(tormenta["lat"], tormenta["lon"]))
-        folium.PolyLine(coords, color="gray", weight=2.5, opacity=0.7).add_to(map)
+            pred = storm.get_forecast_realtime()
+            coords_pred = list(zip(pred["lat"], pred["lon"]))
+            folium.PolyLine(coords_pred, color="red", weight=2.5, opacity=0.7, dash_array='3, 3').add_to(map)
 
-        folium.Marker(location=[tormenta["lat"][-1], tormenta["lon"][-1]], 
-                      popup=folium.Popup("Ubicacion actual de la tormenta", parse_html=True, max_width=100)
-        ).add_to(map)
+            for i in range(len(pred["fhr"])):
+                folium.CircleMarker(
+                    location=[pred["lat"][i], pred["lon"][i]],
+                    radius=5,
+                    color=get_color(pred["vmax"][i]),
+                    fill=True,
+                    popup=f"<b>{tormenta['name']} - Predicción</b><br>+{pred['fhr'][i]}h<br>Viento: {pred['vmax'][i]} kt"
+                ).add_to(map)
 
-        prediccion_tormenta = storm.get_forecast_realtime()
+        map.save(html_filepath)
 
-        for i in range(len(prediccion_tormenta["fhr"])):
-            folium.CircleMarker(
-                location=[prediccion_tormenta["lat"][i], prediccion_tormenta["lon"][i]],
-                radius=5,
-                color=get_color(prediccion_tormenta["vmax"][i]),
-                fill=True,
-                dashArray='3, 3',
-                popup=(
-                    f"<b>{tormenta['name']} - Prediccion</b><br>"
-                    f"Proximas: {prediccion_tormenta['fhr'][i]} horas<br>"
-                    f"Viento: {prediccion_tormenta['vmax'][i]} kt<br>"
-                    f"Presión: {prediccion_tormenta['mslp'][i]} hPa"
-                )
-            ).add_to(map)
+        with open(html_filepath, "r", encoding="utf-8") as f:
+            html_content = f.read()
 
-        coords = list(zip(prediccion_tormenta["lat"], prediccion_tormenta["lon"]))
-        folium.PolyLine(coords, color="red", weight=2.5, opacity=0.7, dashArray='3, 3',).add_to(map)
-
-        map.save(filepath)
-        with open(filepath, "r", encoding="utf-8") as file:
-            html_content = file.read()
-
-        log.info(CrearMsgLog(200, f"dynamic/{storm_name}", "Successful request"))
+        log.info(CrearMsgLog(200, f"dynamic/", "Successful request"))
         return HTMLResponse(content=html_content, status_code=200)
-    
+
     except Exception as exc:
-        log.error(CrearMsgLog(404, f"dynamic/{storm_name}", exc))
+        log.error(CrearMsgLog(404, f"dynamic/", exc))
+        return PlainTextResponse(content=f"Hubo un error al obtener la data", status_code=500)
+
+
 
 # Rutas de tormentas especificas ------------------------------------------------------------------
 
@@ -293,6 +312,8 @@ def get_data_storm(storm_name: str):
     
     except Exception as exc:
         log.error(CrearMsgLog(404, f"data/{storm_name}", exc))
+        return PlainTextResponse(content=f"Hubo un error al obtener la data", status_code=500)
+
 
 
 @app.get("/images/{storm_name}")
@@ -324,6 +345,8 @@ def get_storm_map_image(storm_name: str):
     
     except Exception as exc:
         log.error(CrearMsgLog(404, f"images/{storm_name}", exc))
+        return PlainTextResponse(content=f"Hubo un error al obtener la data", status_code=500)
+
 
 
 @app.get("/dynamic/{storm_name}")
@@ -348,7 +371,6 @@ def dynamic_strom_name_map(storm_name: str):
             log.info(CrearMsgLog(200, f"dynamic/{storm_name}", "Successful request"))
             return HTMLResponse(content=html_content, status_code=200)
 
-        # crear tormenta dynamica con folium -----------------------------------------------
         realtime_obj = realtime.Realtime()
         storm = realtime_obj.get_storm(storm_name)
         tormenta = storm.to_dict()
@@ -404,42 +426,87 @@ def dynamic_strom_name_map(storm_name: str):
     
     except Exception as exc:
         log.error(CrearMsgLog(404, f"dynamic/{storm_name}", exc))
+        return PlainTextResponse(content=f"Hubo un error al obtener la data", status_code=500)
+
 
 # Rutas por solicitud de fecha ----------------------------------------------------------------------------------
 
-@app.get("/data_date/{fecha}")
-def data_date_storm(fecha: str):
+@app.get("/data_date/{date}")
+def data_date_storm(date: str):
     try:
-        dir = os.path.join("data", fecha, "Tormentas", "00_00.json")
+        dir = os.path.join("data", date, "Tormentas", "00_00.json")
 
         if os.path.exists(dir):
             with open(dir, "r") as archivo:
                 data_storm = json.load(archivo)
 
-            log.info(CrearMsgLog(200, f"/data_date/{fecha}", "Successful request"))
+            log.info(CrearMsgLog(200, f"/data_date/{date}", "Successful request"))
             return {"Info Tormenta": data_storm}
         
-        log.info(CrearMsgLog(200, f"/data_date/{fecha}", f"Sin informacion de tormentas el {fecha}"))
-        return PlainTextResponse(content=f"No tengo registro de tormentas el {fecha}", status_code=404)
+        log.info(CrearMsgLog(200, f"/data_date/{date}", f"Sin informacion de tormentas el {date}"))
+        return PlainTextResponse(content=f"No tengo registro de tormentas el {date}", status_code=404)
 
     except Exception as exc:
-        log.error(CrearMsgLog(404, f"data_date/{fecha}", exc))
+        log.error(CrearMsgLog(404, f"data_date/{date}", exc))
+        return PlainTextResponse(content=f"Error al obtener la data", status_code=500)
 
-@app.get("/data_date/{fecha}/{storm_name}")
-def data_date_storm(fecha: str, storm_name: str):
+@app.get("/data_date/{date}/{storm_name}")
+def data_date_storm(date: str, storm_name: str):
     try:
-        dir = os.path.join("data", fecha, storm_name, "00_00.json")
+        dir = os.path.join("data", date, storm_name, "00_00.json")
 
         if os.path.exists(dir):
             with open(dir, "r") as archivo:
                 data_storm = json.load(archivo)
                 data_storm = data_diccionario(data_storm)
 
-            log.info(CrearMsgLog(200, f"/data_date/{fecha}/{storm_name}", "Successful request"))
+            log.info(CrearMsgLog(200, f"/data_date/{date}/{storm_name}", "Successful request"))
             return {"Info Tormenta": data_storm}
         
-        log.info(CrearMsgLog(200, f"/data_date/{fecha}/{storm_name}", f"Sin informacion de tormenta {storm_name} el {fecha}"))
-        return PlainTextResponse(content=f"No tengo registro de tormenta {storm_name} el {fecha}", status_code=404)
+        log.info(CrearMsgLog(200, f"/data_date/{date}/{storm_name}", f"Sin informacion de tormenta {storm_name} el {date}"))
+        return PlainTextResponse(content=f"No tengo registro de tormenta {storm_name} el {date}", status_code=404)
 
     except Exception as exc:
-        log.error(CrearMsgLog(404, f"data_date/{fecha}/{storm_name}", exc))
+        log.error(CrearMsgLog(404, f"data_date/{date}/{storm_name}", exc))
+        return PlainTextResponse(content=f"Error al obtener la data", status_code=500)
+
+
+# Trabajar un gift de todas las png que haya en ese dia de esa tormenta ----
+
+@app.get("/image_date/{date}/{storm_name}")
+def data_date_storm(date: str, storm_name: str):
+    try:
+        base_dir = os.path.join("data", date, storm_name)
+        gif_path = os.path.join(base_dir, "Trayectoria.gif")
+
+        if os.path.exists(gif_path):
+            log.info(CrearMsgLog(200, f"/image_date/{date}/{storm_name}", "Successful request"))
+            return FileResponse(gif_path, media_type="image/gif")
+
+        png_files = sorted(glob.glob(os.path.join(base_dir, "*.png")))
+
+        if not png_files:
+            log.info(CrearMsgLog(404, f"/image_date/{date}/{storm_name}",
+                                 f"Sin imágenes para {storm_name} el {date}"))
+            return PlainTextResponse(
+                content=f"No tengo registro de tormenta {storm_name} el {date}",
+                status_code=404
+            )
+
+        frames = [Image.open(img).convert("RGB") for img in png_files]
+        frame_one = frames[0]
+        frame_one.save(
+            gif_path,
+            format="GIF",
+            append_images=frames,
+            save_all=True,
+            duration=100,
+            loop=0
+        )
+
+        log.info(CrearMsgLog(200, f"/image_date/{date}/{storm_name}", "GIF generado exitosamente"))
+        return FileResponse(gif_path, media_type="image/gif")
+
+    except Exception as exc:
+        log.error(CrearMsgLog(500, f"/image_date/{date}/{storm_name}", str(exc)))
+        return PlainTextResponse(content=f"Error al obtener la data", status_code=500)

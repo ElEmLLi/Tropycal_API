@@ -6,7 +6,7 @@ Tropycal_API es un proyecto desarrollado en python con el objetivo de hacer una 
 ## Librerias y Dependencias
 
 ```
-pip install "fastapi[standard]" tropycal cartopy shapely folium
+pip install "fastapi[standard]" tropycal cartopy shapely folium pillow
 ```
 
 [FastAPI](https://fastapi.tiangolo.com/#run-it)  
@@ -51,6 +51,9 @@ Devuelve una visualización **gráfica de todas las tormentas actuales**.
 Sustituye **[storm_name]** por el nombre de alguna tormenta activa.  
 Esta ruta devuelve una **imagen gráfica** de la tormenta y la guarda en una carpeta local.
 
+### `"/dynamic"` 
+Devuelve un **mapa interactivo** con los puntos graficados correspondientes a todas las tormentas activas.
+
 ### `"/dynamic/{storm_name}"`
 Sustituye **[storm_name]** por el nombre de alguna tormenta activa.  
 Devuelve un **mapa interactivo** con los puntos graficados correspondientes a la tormenta solicitada.
@@ -61,10 +64,11 @@ En un formato ***año_mes_dia*** para **[date]**,  te regresa la lista de tormen
 ### `"/data_date/{date}/{storm_name}"`
 En un formato ***año_mes_dia*** para **[date]**,  y el id de la tormenta para **[storm_name]**, te regresa la información de la tormenta solicitada del dia solicitado, estos de la primeraa hora (00:00) de datos otorgada por la NHC.
 
+### `"/image_date/{date}/{storm_name}"`
+En un formato ***año_mes_dia*** para **[date]**,   y el id de la tormenta para **[storm_name]**, te regresa un archivo formato gif con la trayectoria que siguio la tormenta especificada.
+
 ## Ultimas novedades 
-* Incorporamos la solicitud de lista de tormentas por fecha
-* Incorporamos la solicitud de datos de tormenta especifica, otorgando la fecha y su id
-* Incorporamos la ruta de prediccion de la tormenta al mapa generado con folium
+* Incorporamos la solicitud de archivo formato gif para visualizacion animada de la tormenta
 
 ## Funcionalidades a incorporar
 * Creacion de cono de incertidumbre para la prediccion

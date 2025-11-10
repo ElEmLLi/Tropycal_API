@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bcee3e844201c57b1dce98979758ca7b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_bcee3e844201c57b1dce98979758ca7b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_bcee3e844201c57b1dce98979758ca7b = L.map(
+                "map_bcee3e844201c57b1dce98979758ca7b",
+                {
+                    center: [10.6, -41.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6fc13a49e553a346533d8b2de892a692 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6fc13a49e553a346533d8b2de892a692.addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+            var circle_marker_c34e91ea7889f54e1e04a7610693c521 = L.circleMarker(
+                [10.6, -41.5],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_99553e24aea8e3c1625b81c14946db72 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_67e255bb4e164ba0f200da87976a59da = $(`<div id="html_67e255bb4e164ba0f200da87976a59da" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-17 12:00:00<br>Viento: 25 kt<br>Presión: 1011 hPa</div>`)[0];
+                popup_99553e24aea8e3c1625b81c14946db72.setContent(html_67e255bb4e164ba0f200da87976a59da);
+            
+        
+
+        circle_marker_c34e91ea7889f54e1e04a7610693c521.bindPopup(popup_99553e24aea8e3c1625b81c14946db72)
+        ;
+
+        
+    
+    
+            var circle_marker_51b7a2897cbfb6ab4d729ec3f6c553c3 = L.circleMarker(
+                [10.9, -43.3],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_46bd53e63ba50cbeaa62cc573112a683 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a2c2e6a402870df17651b16ac05f3d96 = $(`<div id="html_a2c2e6a402870df17651b16ac05f3d96" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-17 18:00:00<br>Viento: 25 kt<br>Presión: 1011 hPa</div>`)[0];
+                popup_46bd53e63ba50cbeaa62cc573112a683.setContent(html_a2c2e6a402870df17651b16ac05f3d96);
+            
+        
+
+        circle_marker_51b7a2897cbfb6ab4d729ec3f6c553c3.bindPopup(popup_46bd53e63ba50cbeaa62cc573112a683)
+        ;
+
+        
+    
+    
+            var circle_marker_44f4db5f4b258336d2159f3b10939535 = L.circleMarker(
+                [11.2, -45.5],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_3444363b05f2aaaecc928ea59b6c3849 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f6dae8a48c65f6a567908ad637afa8cb = $(`<div id="html_f6dae8a48c65f6a567908ad637afa8cb" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-18 00:00:00<br>Viento: 25 kt<br>Presión: 1011 hPa</div>`)[0];
+                popup_3444363b05f2aaaecc928ea59b6c3849.setContent(html_f6dae8a48c65f6a567908ad637afa8cb);
+            
+        
+
+        circle_marker_44f4db5f4b258336d2159f3b10939535.bindPopup(popup_3444363b05f2aaaecc928ea59b6c3849)
+        ;
+
+        
+    
+    
+            var circle_marker_5487a561dea023095092af4de3617bcb = L.circleMarker(
+                [11.5, -47.6],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_b55a1e57947bda577c956407032c94cb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b721267c447642007f3c6006aaf99e05 = $(`<div id="html_b721267c447642007f3c6006aaf99e05" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-18 06:00:00<br>Viento: 25 kt<br>Presión: 1011 hPa</div>`)[0];
+                popup_b55a1e57947bda577c956407032c94cb.setContent(html_b721267c447642007f3c6006aaf99e05);
+            
+        
+
+        circle_marker_5487a561dea023095092af4de3617bcb.bindPopup(popup_b55a1e57947bda577c956407032c94cb)
+        ;
+
+        
+    
+    
+            var circle_marker_62b6c0f60c6c7b748cf4344c818e2bc7 = L.circleMarker(
+                [11.5, -50.0],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_f60df55bf716d0ee8133e810ace74cc7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f93466581bf9e5e4d16b4ecf84de98f4 = $(`<div id="html_f93466581bf9e5e4d16b4ecf84de98f4" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-18 12:00:00<br>Viento: 30 kt<br>Presión: 1011 hPa</div>`)[0];
+                popup_f60df55bf716d0ee8133e810ace74cc7.setContent(html_f93466581bf9e5e4d16b4ecf84de98f4);
+            
+        
+
+        circle_marker_62b6c0f60c6c7b748cf4344c818e2bc7.bindPopup(popup_f60df55bf716d0ee8133e810ace74cc7)
+        ;
+
+        
+    
+    
+            var circle_marker_dd1fc7890395c57597fd368b6ab76276 = L.circleMarker(
+                [11.9, -52.8],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_fec561e20ab86265459fface5979bf9f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_412c326b6f1aa9b427ea5699c838481a = $(`<div id="html_412c326b6f1aa9b427ea5699c838481a" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-18 18:00:00<br>Viento: 30 kt<br>Presión: 1010 hPa</div>`)[0];
+                popup_fec561e20ab86265459fface5979bf9f.setContent(html_412c326b6f1aa9b427ea5699c838481a);
+            
+        
+
+        circle_marker_dd1fc7890395c57597fd368b6ab76276.bindPopup(popup_fec561e20ab86265459fface5979bf9f)
+        ;
+
+        
+    
+    
+            var circle_marker_fc0890d539cbe58d5667241dc1127b27 = L.circleMarker(
+                [12.3, -55.1],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_b6148ec1f9110e17e441ca47460339e7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a7e8ff376def3424ae39fd07e21abc43 = $(`<div id="html_a7e8ff376def3424ae39fd07e21abc43" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-19 00:00:00<br>Viento: 30 kt<br>Presión: 1010 hPa</div>`)[0];
+                popup_b6148ec1f9110e17e441ca47460339e7.setContent(html_a7e8ff376def3424ae39fd07e21abc43);
+            
+        
+
+        circle_marker_fc0890d539cbe58d5667241dc1127b27.bindPopup(popup_b6148ec1f9110e17e441ca47460339e7)
+        ;
+
+        
+    
+    
+            var circle_marker_968aa857c6e5d62f3756f42286cddeb3 = L.circleMarker(
+                [12.6, -57.5],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_2d30d9e4bb40e3e68f03e6cc9630dd75 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7038f501426fc2b22edd1aeefc96d717 = $(`<div id="html_7038f501426fc2b22edd1aeefc96d717" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-19 06:00:00<br>Viento: 30 kt<br>Presión: 1010 hPa</div>`)[0];
+                popup_2d30d9e4bb40e3e68f03e6cc9630dd75.setContent(html_7038f501426fc2b22edd1aeefc96d717);
+            
+        
+
+        circle_marker_968aa857c6e5d62f3756f42286cddeb3.bindPopup(popup_2d30d9e4bb40e3e68f03e6cc9630dd75)
+        ;
+
+        
+    
+    
+            var circle_marker_62120e2e76f567f8804649c6ec6d58e3 = L.circleMarker(
+                [12.6, -59.6],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_11e958501ca0f70ff43fe4d187c444cc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2bdd02b7bad527f6ecf4e5a1d4728714 = $(`<div id="html_2bdd02b7bad527f6ecf4e5a1d4728714" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-19 12:00:00<br>Viento: 30 kt<br>Presión: 1009 hPa</div>`)[0];
+                popup_11e958501ca0f70ff43fe4d187c444cc.setContent(html_2bdd02b7bad527f6ecf4e5a1d4728714);
+            
+        
+
+        circle_marker_62120e2e76f567f8804649c6ec6d58e3.bindPopup(popup_11e958501ca0f70ff43fe4d187c444cc)
+        ;
+
+        
+    
+    
+            var circle_marker_dd27e40790cafdbaa9698bb04bcf1b34 = L.circleMarker(
+                [12.7, -61.4],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_fff7706ec22ca45b1ef3bb1991fb1f2f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_afea5ef0d025cef0cdeda2049d823c89 = $(`<div id="html_afea5ef0d025cef0cdeda2049d823c89" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-19 18:00:00<br>Viento: 30 kt<br>Presión: 1009 hPa</div>`)[0];
+                popup_fff7706ec22ca45b1ef3bb1991fb1f2f.setContent(html_afea5ef0d025cef0cdeda2049d823c89);
+            
+        
+
+        circle_marker_dd27e40790cafdbaa9698bb04bcf1b34.bindPopup(popup_fff7706ec22ca45b1ef3bb1991fb1f2f)
+        ;
+
+        
+    
+    
+            var circle_marker_143ad6e27078811c7a1045dc2d5af0d0 = L.circleMarker(
+                [13.2, -63.0],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_15d864348deeb4427ee754e9f6892d32 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1daea685939261ac04c6d028e8d99f9b = $(`<div id="html_1daea685939261ac04c6d028e8d99f9b" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-20 00:00:00<br>Viento: 30 kt<br>Presión: 1009 hPa</div>`)[0];
+                popup_15d864348deeb4427ee754e9f6892d32.setContent(html_1daea685939261ac04c6d028e8d99f9b);
+            
+        
+
+        circle_marker_143ad6e27078811c7a1045dc2d5af0d0.bindPopup(popup_15d864348deeb4427ee754e9f6892d32)
+        ;
+
+        
+    
+    
+            var circle_marker_705740e4f35d275b4c759c44517a5d5d = L.circleMarker(
+                [13.6, -64.8],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_33c4ddda5f6f293c82b07adcb1de98db = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3c3a8939172ae049ed74a2a9b21327d0 = $(`<div id="html_3c3a8939172ae049ed74a2a9b21327d0" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-20 06:00:00<br>Viento: 30 kt<br>Presión: 1008 hPa</div>`)[0];
+                popup_33c4ddda5f6f293c82b07adcb1de98db.setContent(html_3c3a8939172ae049ed74a2a9b21327d0);
+            
+        
+
+        circle_marker_705740e4f35d275b4c759c44517a5d5d.bindPopup(popup_33c4ddda5f6f293c82b07adcb1de98db)
+        ;
+
+        
+    
+    
+            var circle_marker_70558c2615aa30c20c98397abe46777f = L.circleMarker(
+                [13.8, -66.5],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_db6022f3af8aa7e70dc3fb264d5e6576 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_06771a0df89df6f0a03dece30dc78f75 = $(`<div id="html_06771a0df89df6f0a03dece30dc78f75" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-20 12:00:00<br>Viento: 35 kt<br>Presión: 1008 hPa</div>`)[0];
+                popup_db6022f3af8aa7e70dc3fb264d5e6576.setContent(html_06771a0df89df6f0a03dece30dc78f75);
+            
+        
+
+        circle_marker_70558c2615aa30c20c98397abe46777f.bindPopup(popup_db6022f3af8aa7e70dc3fb264d5e6576)
+        ;
+
+        
+    
+    
+            var circle_marker_fc73af13c90009f0dada1c97cf1f1cf4 = L.circleMarker(
+                [13.9, -68.0],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_ba23e9b8afb94b29246a9bce406884f4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cff1d480f3c883583aa2257b991118a6 = $(`<div id="html_cff1d480f3c883583aa2257b991118a6" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-20 18:00:00<br>Viento: 35 kt<br>Presión: 1008 hPa</div>`)[0];
+                popup_ba23e9b8afb94b29246a9bce406884f4.setContent(html_cff1d480f3c883583aa2257b991118a6);
+            
+        
+
+        circle_marker_fc73af13c90009f0dada1c97cf1f1cf4.bindPopup(popup_ba23e9b8afb94b29246a9bce406884f4)
+        ;
+
+        
+    
+    
+            var circle_marker_64c72a5f74cf46f0d08303bffb068bd0 = L.circleMarker(
+                [13.9, -68.8],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_8094405aca92f97667af3661602bc146 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_babd73a53c416b98b99b98c991775dfb = $(`<div id="html_babd73a53c416b98b99b98c991775dfb" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-21 00:00:00<br>Viento: 35 kt<br>Presión: 1006 hPa</div>`)[0];
+                popup_8094405aca92f97667af3661602bc146.setContent(html_babd73a53c416b98b99b98c991775dfb);
+            
+        
+
+        circle_marker_64c72a5f74cf46f0d08303bffb068bd0.bindPopup(popup_8094405aca92f97667af3661602bc146)
+        ;
+
+        
+    
+    
+            var circle_marker_616e57e6b5da69de5a8b2a43cd469d43 = L.circleMarker(
+                [14.0, -70.0],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_d54a98aa16c942d15d4c7d511e1579a4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_33954bcd30eea4a20d8daa19bfe48632 = $(`<div id="html_33954bcd30eea4a20d8daa19bfe48632" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-21 06:00:00<br>Viento: 40 kt<br>Presión: 1004 hPa</div>`)[0];
+                popup_d54a98aa16c942d15d4c7d511e1579a4.setContent(html_33954bcd30eea4a20d8daa19bfe48632);
+            
+        
+
+        circle_marker_616e57e6b5da69de5a8b2a43cd469d43.bindPopup(popup_d54a98aa16c942d15d4c7d511e1579a4)
+        ;
+
+        
+    
+    
+            var circle_marker_002eefda623253f13db1b75991b6bde0 = L.circleMarker(
+                [14.1, -71.3],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_de4059ad6b92f6572c0232228f1c2676 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_db728787d6281c7aa70ce3c8f20f66ba = $(`<div id="html_db728787d6281c7aa70ce3c8f20f66ba" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-21 12:00:00<br>Viento: 45 kt<br>Presión: 1003 hPa</div>`)[0];
+                popup_de4059ad6b92f6572c0232228f1c2676.setContent(html_db728787d6281c7aa70ce3c8f20f66ba);
+            
+        
+
+        circle_marker_002eefda623253f13db1b75991b6bde0.bindPopup(popup_de4059ad6b92f6572c0232228f1c2676)
+        ;
+
+        
+    
+    
+            var circle_marker_c9cea2e039c2f889f67d845df922e302 = L.circleMarker(
+                [14.1, -72.6],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_01feba9d1fa94cf2a2d7107eba0fa353 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a469fe0b64b142008fc28fc00d9d1621 = $(`<div id="html_a469fe0b64b142008fc28fc00d9d1621" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-21 18:00:00<br>Viento: 45 kt<br>Presión: 1003 hPa</div>`)[0];
+                popup_01feba9d1fa94cf2a2d7107eba0fa353.setContent(html_a469fe0b64b142008fc28fc00d9d1621);
+            
+        
+
+        circle_marker_c9cea2e039c2f889f67d845df922e302.bindPopup(popup_01feba9d1fa94cf2a2d7107eba0fa353)
+        ;
+
+        
+    
+    
+            var circle_marker_4769893a67b3d4ed5f4bac8bba2da24f = L.circleMarker(
+                [14.0, -73.6],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_9d34d51f7fab5e87f6851459cc01432b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_733b2987eef0762d2cb7e25dad5375b2 = $(`<div id="html_733b2987eef0762d2cb7e25dad5375b2" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-22 00:00:00<br>Viento: 45 kt<br>Presión: 1003 hPa</div>`)[0];
+                popup_9d34d51f7fab5e87f6851459cc01432b.setContent(html_733b2987eef0762d2cb7e25dad5375b2);
+            
+        
+
+        circle_marker_4769893a67b3d4ed5f4bac8bba2da24f.bindPopup(popup_9d34d51f7fab5e87f6851459cc01432b)
+        ;
+
+        
+    
+    
+            var circle_marker_0368bba19858c6c17867433a0612850d = L.circleMarker(
+                [14.0, -73.5],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_e9c104ee779b76c1ca6cf44fef2c5d5d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3372d4c1e1a29ba9224d99bfbef959d = $(`<div id="html_f3372d4c1e1a29ba9224d99bfbef959d" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-22 06:00:00<br>Viento: 45 kt<br>Presión: 1001 hPa</div>`)[0];
+                popup_e9c104ee779b76c1ca6cf44fef2c5d5d.setContent(html_f3372d4c1e1a29ba9224d99bfbef959d);
+            
+        
+
+        circle_marker_0368bba19858c6c17867433a0612850d.bindPopup(popup_e9c104ee779b76c1ca6cf44fef2c5d5d)
+        ;
+
+        
+    
+    
+            var circle_marker_f6ef4418e0e48067ff602f5c1c527c40 = L.circleMarker(
+                [14.3, -73.6],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_14f9117fc1fd276f34fa51e2867615bc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7d92979a3729e780db906bff719e2f72 = $(`<div id="html_7d92979a3729e780db906bff719e2f72" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-22 12:00:00<br>Viento: 45 kt<br>Presión: 1001 hPa</div>`)[0];
+                popup_14f9117fc1fd276f34fa51e2867615bc.setContent(html_7d92979a3729e780db906bff719e2f72);
+            
+        
+
+        circle_marker_f6ef4418e0e48067ff602f5c1c527c40.bindPopup(popup_14f9117fc1fd276f34fa51e2867615bc)
+        ;
+
+        
+    
+    
+            var circle_marker_8a7d4c6e5f7e68e11bd5ae2f4362b086 = L.circleMarker(
+                [14.3, -74.0],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_77b6adf3d90783b9fc7888e9082263cf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9b7876d34b0d300e53810b67bf827a1d = $(`<div id="html_9b7876d34b0d300e53810b67bf827a1d" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-22 18:00:00<br>Viento: 45 kt<br>Presión: 1001 hPa</div>`)[0];
+                popup_77b6adf3d90783b9fc7888e9082263cf.setContent(html_9b7876d34b0d300e53810b67bf827a1d);
+            
+        
+
+        circle_marker_8a7d4c6e5f7e68e11bd5ae2f4362b086.bindPopup(popup_77b6adf3d90783b9fc7888e9082263cf)
+        ;
+
+        
+    
+    
+            var circle_marker_b8660d45a317f8ee4b04c783869cfda5 = L.circleMarker(
+                [14.3, -74.5],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_9ffa187e6e793d8e5ceaf9d29968a7b8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1bbb428f6f1e80c1366f4383ad27c9be = $(`<div id="html_1bbb428f6f1e80c1366f4383ad27c9be" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-23 00:00:00<br>Viento: 45 kt<br>Presión: 1002 hPa</div>`)[0];
+                popup_9ffa187e6e793d8e5ceaf9d29968a7b8.setContent(html_1bbb428f6f1e80c1366f4383ad27c9be);
+            
+        
+
+        circle_marker_b8660d45a317f8ee4b04c783869cfda5.bindPopup(popup_9ffa187e6e793d8e5ceaf9d29968a7b8)
+        ;
+
+        
+    
+    
+            var circle_marker_fc1517cc0388f737d3283aefd5e635d1 = L.circleMarker(
+                [14.7, -74.6],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_35110cfef23af003ec9536aeedfb4fa6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0af1e87d728ec2bc35f5f07bd4f46ead = $(`<div id="html_0af1e87d728ec2bc35f5f07bd4f46ead" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-23 06:00:00<br>Viento: 40 kt<br>Presión: 1003 hPa</div>`)[0];
+                popup_35110cfef23af003ec9536aeedfb4fa6.setContent(html_0af1e87d728ec2bc35f5f07bd4f46ead);
+            
+        
+
+        circle_marker_fc1517cc0388f737d3283aefd5e635d1.bindPopup(popup_35110cfef23af003ec9536aeedfb4fa6)
+        ;
+
+        
+    
+    
+            var circle_marker_59ed6bb90234d9b28b79521e6afacea6 = L.circleMarker(
+                [15.3, -75.0],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_92791663e7378f8b68c970852b68bc07 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_471fe53b73d316efae3471000a0844f2 = $(`<div id="html_471fe53b73d316efae3471000a0844f2" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-23 12:00:00<br>Viento: 40 kt<br>Presión: 1003 hPa</div>`)[0];
+                popup_92791663e7378f8b68c970852b68bc07.setContent(html_471fe53b73d316efae3471000a0844f2);
+            
+        
+
+        circle_marker_59ed6bb90234d9b28b79521e6afacea6.bindPopup(popup_92791663e7378f8b68c970852b68bc07)
+        ;
+
+        
+    
+    
+            var circle_marker_e2ebbd7b0b4fab06a98ed043b0f79c06 = L.circleMarker(
+                [15.5, -75.3],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_df022566700bb89d335e585a93d5d942 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f854d4cc6fc0de295a85b2fd8ab3dca8 = $(`<div id="html_f854d4cc6fc0de295a85b2fd8ab3dca8" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-23 18:00:00<br>Viento: 40 kt<br>Presión: 1001 hPa</div>`)[0];
+                popup_df022566700bb89d335e585a93d5d942.setContent(html_f854d4cc6fc0de295a85b2fd8ab3dca8);
+            
+        
+
+        circle_marker_e2ebbd7b0b4fab06a98ed043b0f79c06.bindPopup(popup_df022566700bb89d335e585a93d5d942)
+        ;
+
+        
+    
+    
+            var circle_marker_8ec6a7203e541814fb1943026b863393 = L.circleMarker(
+                [15.8, -75.6],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_729a025f1e93895ed437924b4b6d3239 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c00b31884a9ccae7e59dfd24921b4aa4 = $(`<div id="html_c00b31884a9ccae7e59dfd24921b4aa4" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-24 00:00:00<br>Viento: 40 kt<br>Presión: 1001 hPa</div>`)[0];
+                popup_729a025f1e93895ed437924b4b6d3239.setContent(html_c00b31884a9ccae7e59dfd24921b4aa4);
+            
+        
+
+        circle_marker_8ec6a7203e541814fb1943026b863393.bindPopup(popup_729a025f1e93895ed437924b4b6d3239)
+        ;
+
+        
+    
+    
+            var circle_marker_92241ed7e2c6ff4e47b42816e7701d77 = L.circleMarker(
+                [16.0, -75.4],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_c85e7403026f6cea2d993b01baab77af = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7d7cdff021576056e0509e2d42d636d0 = $(`<div id="html_7d7cdff021576056e0509e2d42d636d0" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-24 06:00:00<br>Viento: 40 kt<br>Presión: 1001 hPa</div>`)[0];
+                popup_c85e7403026f6cea2d993b01baab77af.setContent(html_7d7cdff021576056e0509e2d42d636d0);
+            
+        
+
+        circle_marker_92241ed7e2c6ff4e47b42816e7701d77.bindPopup(popup_c85e7403026f6cea2d993b01baab77af)
+        ;
+
+        
+    
+    
+            var circle_marker_5d51d500f0da35cc7843e5c363495560 = L.circleMarker(
+                [15.9, -75.0],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_d46af4c3d334b1ce5bbdd94b3be4b137 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b29564581bf4b8d64e294039a15ba81 = $(`<div id="html_1b29564581bf4b8d64e294039a15ba81" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-24 12:00:00<br>Viento: 40 kt<br>Presión: 1001 hPa</div>`)[0];
+                popup_d46af4c3d334b1ce5bbdd94b3be4b137.setContent(html_1b29564581bf4b8d64e294039a15ba81);
+            
+        
+
+        circle_marker_5d51d500f0da35cc7843e5c363495560.bindPopup(popup_d46af4c3d334b1ce5bbdd94b3be4b137)
+        ;
+
+        
+    
+    
+            var circle_marker_162ba275024ff24b97983cdb6a7c4b5e = L.circleMarker(
+                [15.8, -74.5],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_21104851d950e0dfdfbffdc0d62273f1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2af74a238c0cb9e992bd5c3b27364f93 = $(`<div id="html_2af74a238c0cb9e992bd5c3b27364f93" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-24 18:00:00<br>Viento: 50 kt<br>Presión: 997 hPa</div>`)[0];
+                popup_21104851d950e0dfdfbffdc0d62273f1.setContent(html_2af74a238c0cb9e992bd5c3b27364f93);
+            
+        
+
+        circle_marker_162ba275024ff24b97983cdb6a7c4b5e.bindPopup(popup_21104851d950e0dfdfbffdc0d62273f1)
+        ;
+
+        
+    
+    
+            var circle_marker_a792e4106cc2947470a572efaf4e4abd = L.circleMarker(
+                [16.2, -74.8],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_761100843e825c4b8e2b19870e23c155 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bbbd2cf23c1d198041abe096a176bbae = $(`<div id="html_bbbd2cf23c1d198041abe096a176bbae" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-25 00:00:00<br>Viento: 55 kt<br>Presión: 993 hPa</div>`)[0];
+                popup_761100843e825c4b8e2b19870e23c155.setContent(html_bbbd2cf23c1d198041abe096a176bbae);
+            
+        
+
+        circle_marker_a792e4106cc2947470a572efaf4e4abd.bindPopup(popup_761100843e825c4b8e2b19870e23c155)
+        ;
+
+        
+    
+    
+            var circle_marker_c921eef13bae895aa90f4a93c40df7b6 = L.circleMarker(
+                [16.3, -74.9],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_af11dd2be28693dc4e42e5868fa6d65f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c53413036b6cbe1ac27a4b88633a5153 = $(`<div id="html_c53413036b6cbe1ac27a4b88633a5153" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-25 06:00:00<br>Viento: 60 kt<br>Presión: 986 hPa</div>`)[0];
+                popup_af11dd2be28693dc4e42e5868fa6d65f.setContent(html_c53413036b6cbe1ac27a4b88633a5153);
+            
+        
+
+        circle_marker_c921eef13bae895aa90f4a93c40df7b6.bindPopup(popup_af11dd2be28693dc4e42e5868fa6d65f)
+        ;
+
+        
+    
+    
+            var circle_marker_267441b0abc3537dd7e888b1d6a74a4c = L.circleMarker(
+                [16.4, -75.0],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_79abb6fd6991aa00c0371992c1ed6921 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3e2ae57746f233063b2cbb39b6975871 = $(`<div id="html_3e2ae57746f233063b2cbb39b6975871" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-25 12:00:00<br>Viento: 60 kt<br>Presión: 982 hPa</div>`)[0];
+                popup_79abb6fd6991aa00c0371992c1ed6921.setContent(html_3e2ae57746f233063b2cbb39b6975871);
+            
+        
+
+        circle_marker_267441b0abc3537dd7e888b1d6a74a4c.bindPopup(popup_79abb6fd6991aa00c0371992c1ed6921)
+        ;
+
+        
+    
+    
+            var circle_marker_d14d059ebcd3202cdd3debcd47dc328c = L.circleMarker(
+                [16.6, -75.2],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_c15a15027d1958f15c0678ccb6fc27fa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e93ec0010d419fa79cc607561d885f97 = $(`<div id="html_e93ec0010d419fa79cc607561d885f97" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-25 18:00:00<br>Viento: 75 kt<br>Presión: 976 hPa</div>`)[0];
+                popup_c15a15027d1958f15c0678ccb6fc27fa.setContent(html_e93ec0010d419fa79cc607561d885f97);
+            
+        
+
+        circle_marker_d14d059ebcd3202cdd3debcd47dc328c.bindPopup(popup_c15a15027d1958f15c0678ccb6fc27fa)
+        ;
+
+        
+    
+    
+            var circle_marker_39c1d2f34d7833a739a5db09d4542421 = L.circleMarker(
+                [16.5, -75.7],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_48e905ac0cc958634eaac4857cba7083 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e7985fcd4b7d90964c4af908a1bd756c = $(`<div id="html_e7985fcd4b7d90964c4af908a1bd756c" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-26 00:00:00<br>Viento: 90 kt<br>Presión: 971 hPa</div>`)[0];
+                popup_48e905ac0cc958634eaac4857cba7083.setContent(html_e7985fcd4b7d90964c4af908a1bd756c);
+            
+        
+
+        circle_marker_39c1d2f34d7833a739a5db09d4542421.bindPopup(popup_48e905ac0cc958634eaac4857cba7083)
+        ;
+
+        
+    
+    
+            var circle_marker_92e9764d6e175e6800871fd67ca8367c = L.circleMarker(
+                [16.3, -76.0],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_3fdc2143aa0de517af45138ae135c8d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a6d8978b5e5bbf5d52d282bc23058bec = $(`<div id="html_a6d8978b5e5bbf5d52d282bc23058bec" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-26 06:00:00<br>Viento: 110 kt<br>Presión: 954 hPa</div>`)[0];
+                popup_3fdc2143aa0de517af45138ae135c8d6.setContent(html_a6d8978b5e5bbf5d52d282bc23058bec);
+            
+        
+
+        circle_marker_92e9764d6e175e6800871fd67ca8367c.bindPopup(popup_3fdc2143aa0de517af45138ae135c8d6)
+        ;
+
+        
+    
+    
+            var circle_marker_c95073bbdb138a801e7cead769c89018 = L.circleMarker(
+                [16.4, -76.4],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_7815c99d79273dc8fe9abc49195473b1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4f360c3680355d9cbb52d0837ec8c579 = $(`<div id="html_4f360c3680355d9cbb52d0837ec8c579" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-26 12:00:00<br>Viento: 120 kt<br>Presión: 952 hPa</div>`)[0];
+                popup_7815c99d79273dc8fe9abc49195473b1.setContent(html_4f360c3680355d9cbb52d0837ec8c579);
+            
+        
+
+        circle_marker_c95073bbdb138a801e7cead769c89018.bindPopup(popup_7815c99d79273dc8fe9abc49195473b1)
+        ;
+
+        
+    
+    
+            var circle_marker_472039718ee09e3b0eb013cab8d54859 = L.circleMarker(
+                [16.4, -76.9],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_559cbdb94708e48a77f27638c0c4b0d8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_820f6931690bad2f2eb0d3f0f7142838 = $(`<div id="html_820f6931690bad2f2eb0d3f0f7142838" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-26 18:00:00<br>Viento: 120 kt<br>Presión: 944 hPa</div>`)[0];
+                popup_559cbdb94708e48a77f27638c0c4b0d8.setContent(html_820f6931690bad2f2eb0d3f0f7142838);
+            
+        
+
+        circle_marker_472039718ee09e3b0eb013cab8d54859.bindPopup(popup_559cbdb94708e48a77f27638c0c4b0d8)
+        ;
+
+        
+    
+    
+            var circle_marker_9fb4542926f4216f7e57b0f2c4db460b = L.circleMarker(
+                [16.4, -77.3],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_cf7ed6a64e6d625086fecce8838f75f0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_177b7033b202eacd87f1e5bb824063c3 = $(`<div id="html_177b7033b202eacd87f1e5bb824063c3" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-27 00:00:00<br>Viento: 125 kt<br>Presión: 933 hPa</div>`)[0];
+                popup_cf7ed6a64e6d625086fecce8838f75f0.setContent(html_177b7033b202eacd87f1e5bb824063c3);
+            
+        
+
+        circle_marker_9fb4542926f4216f7e57b0f2c4db460b.bindPopup(popup_cf7ed6a64e6d625086fecce8838f75f0)
+        ;
+
+        
+    
+    
+            var circle_marker_64b9ea13e3cfad00f2f4d82f26018253 = L.circleMarker(
+                [16.3, -77.7],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_401f9c18ec7f0cb8a28ca2a4243253ac = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e69f4f96a1a00c2d228ca37dc97a4223 = $(`<div id="html_e69f4f96a1a00c2d228ca37dc97a4223" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-27 06:00:00<br>Viento: 135 kt<br>Presión: 924 hPa</div>`)[0];
+                popup_401f9c18ec7f0cb8a28ca2a4243253ac.setContent(html_e69f4f96a1a00c2d228ca37dc97a4223);
+            
+        
+
+        circle_marker_64b9ea13e3cfad00f2f4d82f26018253.bindPopup(popup_401f9c18ec7f0cb8a28ca2a4243253ac)
+        ;
+
+        
+    
+    
+            var circle_marker_6e3f6be5f150c10cecdeee9e5ed8d0ce = L.circleMarker(
+                [16.4, -78.0],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_663ba0d3bcc29cc604560f6ef2e7e2c3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_16f754bfa7ae82e19c4f51402a1e9811 = $(`<div id="html_16f754bfa7ae82e19c4f51402a1e9811" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-27 12:00:00<br>Viento: 140 kt<br>Presión: 912 hPa</div>`)[0];
+                popup_663ba0d3bcc29cc604560f6ef2e7e2c3.setContent(html_16f754bfa7ae82e19c4f51402a1e9811);
+            
+        
+
+        circle_marker_6e3f6be5f150c10cecdeee9e5ed8d0ce.bindPopup(popup_663ba0d3bcc29cc604560f6ef2e7e2c3)
+        ;
+
+        
+    
+    
+            var circle_marker_cb8b59773cc16f4a19959f0bbdb9f1b2 = L.circleMarker(
+                [16.5, -78.3],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_3f226f8dd23420721290a9ac4eab34da = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_697099593e89db5af2af88b1bd06ff0c = $(`<div id="html_697099593e89db5af2af88b1bd06ff0c" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-27 18:00:00<br>Viento: 150 kt<br>Presión: 906 hPa</div>`)[0];
+                popup_3f226f8dd23420721290a9ac4eab34da.setContent(html_697099593e89db5af2af88b1bd06ff0c);
+            
+        
+
+        circle_marker_cb8b59773cc16f4a19959f0bbdb9f1b2.bindPopup(popup_3f226f8dd23420721290a9ac4eab34da)
+        ;
+
+        
+    
+    
+            var circle_marker_d4664e21708ccfac13c031f9e1dfc2f8 = L.circleMarker(
+                [16.5, -78.6],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_3ff1784bb1be52933074d9aeb7ab0bdd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3a67e826e61fd2fb4e5c09f106d33118 = $(`<div id="html_3a67e826e61fd2fb4e5c09f106d33118" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-28 00:00:00<br>Viento: 150 kt<br>Presión: 909 hPa</div>`)[0];
+                popup_3ff1784bb1be52933074d9aeb7ab0bdd.setContent(html_3a67e826e61fd2fb4e5c09f106d33118);
+            
+        
+
+        circle_marker_d4664e21708ccfac13c031f9e1dfc2f8.bindPopup(popup_3ff1784bb1be52933074d9aeb7ab0bdd)
+        ;
+
+        
+    
+    
+            var circle_marker_a713bca83fb56793a731888394f95327 = L.circleMarker(
+                [16.9, -78.4],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_3eace0e1ad5dc7417f87309a867cbdaf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_11cab8c958411a64840a9a25ac10ee84 = $(`<div id="html_11cab8c958411a64840a9a25ac10ee84" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-28 06:00:00<br>Viento: 150 kt<br>Presión: 901 hPa</div>`)[0];
+                popup_3eace0e1ad5dc7417f87309a867cbdaf.setContent(html_11cab8c958411a64840a9a25ac10ee84);
+            
+        
+
+        circle_marker_a713bca83fb56793a731888394f95327.bindPopup(popup_3eace0e1ad5dc7417f87309a867cbdaf)
+        ;
+
+        
+    
+    
+            var circle_marker_51772e654330592ccd92b2db5c312c11 = L.circleMarker(
+                [17.5, -78.1],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_3d75a7985ca5bc9799228731912329ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3c542fa0481ff17511c81b7e5ef01336 = $(`<div id="html_3c542fa0481ff17511c81b7e5ef01336" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-28 12:00:00<br>Viento: 155 kt<br>Presión: 896 hPa</div>`)[0];
+                popup_3d75a7985ca5bc9799228731912329ec.setContent(html_3c542fa0481ff17511c81b7e5ef01336);
+            
+        
+
+        circle_marker_51772e654330592ccd92b2db5c312c11.bindPopup(popup_3d75a7985ca5bc9799228731912329ec)
+        ;
+
+        
+    
+    
+            var circle_marker_217bfde61ec76eeab49c91cf7c5b703a = L.circleMarker(
+                [18.2, -77.9],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_5ed89d27ada29e767ba50571d2aaf66d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0adf06ad645da36b193a33d53cc4fb5f = $(`<div id="html_0adf06ad645da36b193a33d53cc4fb5f" style="width: 100.0%; height: 100.0%;"><b>MELISSA</b><br>Fecha: 2025-10-28 18:00:00<br>Viento: 145 kt<br>Presión: 899 hPa</div>`)[0];
+                popup_5ed89d27ada29e767ba50571d2aaf66d.setContent(html_0adf06ad645da36b193a33d53cc4fb5f);
+            
+        
+
+        circle_marker_217bfde61ec76eeab49c91cf7c5b703a.bindPopup(popup_5ed89d27ada29e767ba50571d2aaf66d)
+        ;
+
+        
+    
+    
+            var poly_line_e786759139763e8279b22ae9b12df82a = L.polyline(
+                [[10.6, -41.5], [10.9, -43.3], [11.2, -45.5], [11.5, -47.6], [11.5, -50.0], [11.9, -52.8], [12.3, -55.1], [12.6, -57.5], [12.6, -59.6], [12.7, -61.4], [13.2, -63.0], [13.6, -64.8], [13.8, -66.5], [13.9, -68.0], [13.9, -68.8], [14.0, -70.0], [14.1, -71.3], [14.1, -72.6], [14.0, -73.6], [14.0, -73.5], [14.3, -73.6], [14.3, -74.0], [14.3, -74.5], [14.7, -74.6], [15.3, -75.0], [15.5, -75.3], [15.8, -75.6], [16.0, -75.4], [15.9, -75.0], [15.8, -74.5], [16.2, -74.8], [16.3, -74.9], [16.4, -75.0], [16.6, -75.2], [16.5, -75.7], [16.3, -76.0], [16.4, -76.4], [16.4, -76.9], [16.4, -77.3], [16.3, -77.7], [16.4, -78.0], [16.5, -78.3], [16.5, -78.6], [16.9, -78.4], [17.5, -78.1], [18.2, -77.9]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+            var marker_1264846896d44328ab1f1a84336b6d5d = L.marker(
+                [18.2, -77.9],
+                {
+}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_9913238ca1aed3fbd2fce2fa73efc0a0 = L.popup({
+  "maxWidth": 100,
+});
+
+        
+            
+                var html_704203e3578feebb1420b77328b90232 = $(`<div id="html_704203e3578feebb1420b77328b90232" style="width: 100.0%; height: 100.0%;">Ubicacion actual de la tormenta</div>`)[0];
+                popup_9913238ca1aed3fbd2fce2fa73efc0a0.setContent(html_704203e3578feebb1420b77328b90232);
+            
+        
+
+        marker_1264846896d44328ab1f1a84336b6d5d.bindPopup(popup_9913238ca1aed3fbd2fce2fa73efc0a0)
+        ;
+
+        
+    
+    
+            var circle_marker_b00a039336017e9fdd608f7e1ac267ae = L.circleMarker(
+                [18.2, -77.9],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_38fe42fb66c09b02ef72db5e868d7711 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a9e12c04b8f05fbbc152ffe4f159dce4 = $(`<div id="html_a9e12c04b8f05fbbc152ffe4f159dce4" style="width: 100.0%; height: 100.0%;"><b>MELISSA - Prediccion</b><br>Proximas: 0 horas<br>Viento: 145 kt<br>Presión: nan hPa</div>`)[0];
+                popup_38fe42fb66c09b02ef72db5e868d7711.setContent(html_a9e12c04b8f05fbbc152ffe4f159dce4);
+            
+        
+
+        circle_marker_b00a039336017e9fdd608f7e1ac267ae.bindPopup(popup_38fe42fb66c09b02ef72db5e868d7711)
+        ;
+
+        
+    
+    
+            var circle_marker_5b0d7b936bb928bed92a606a2ec52fda = L.circleMarker(
+                [18.5, -77.7],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_803bd68a2fc4b18fc00c16b70abea2c7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_15e6ed605ed409fd707cfcbb7ae8e908 = $(`<div id="html_15e6ed605ed409fd707cfcbb7ae8e908" style="width: 100.0%; height: 100.0%;"><b>MELISSA - Prediccion</b><br>Proximas: 3 horas<br>Viento: 125 kt<br>Presión: 921 hPa</div>`)[0];
+                popup_803bd68a2fc4b18fc00c16b70abea2c7.setContent(html_15e6ed605ed409fd707cfcbb7ae8e908);
+            
+        
+
+        circle_marker_5b0d7b936bb928bed92a606a2ec52fda.bindPopup(popup_803bd68a2fc4b18fc00c16b70abea2c7)
+        ;
+
+        
+    
+    
+            var circle_marker_66388b57f970878489b9a42bf6f86ec6 = L.circleMarker(
+                [19.9, -76.7],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_b408481e70e6e129dbf0687f2b05da3d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1d930751997fcca1e3d0822e0fa1ae3b = $(`<div id="html_1d930751997fcca1e3d0822e0fa1ae3b" style="width: 100.0%; height: 100.0%;"><b>MELISSA - Prediccion</b><br>Proximas: 12 horas<br>Viento: 120 kt<br>Presión: nan hPa</div>`)[0];
+                popup_b408481e70e6e129dbf0687f2b05da3d.setContent(html_1d930751997fcca1e3d0822e0fa1ae3b);
+            
+        
+
+        circle_marker_66388b57f970878489b9a42bf6f86ec6.bindPopup(popup_b408481e70e6e129dbf0687f2b05da3d)
+        ;
+
+        
+    
+    
+            var circle_marker_153795a64bb072f97fb918832975858f = L.circleMarker(
+                [22.2, -75.3],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_2dbdd95ff10ad1cc38965e6e911a6e37 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2e7105d629046b1e8ba34b63417f38ba = $(`<div id="html_2e7105d629046b1e8ba34b63417f38ba" style="width: 100.0%; height: 100.0%;"><b>MELISSA - Prediccion</b><br>Proximas: 24 horas<br>Viento: 100 kt<br>Presión: nan hPa</div>`)[0];
+                popup_2dbdd95ff10ad1cc38965e6e911a6e37.setContent(html_2e7105d629046b1e8ba34b63417f38ba);
+            
+        
+
+        circle_marker_153795a64bb072f97fb918832975858f.bindPopup(popup_2dbdd95ff10ad1cc38965e6e911a6e37)
+        ;
+
+        
+    
+    
+            var circle_marker_52a727c1351ec1bcf8f3f6001817c00c = L.circleMarker(
+                [25.0, -73.2],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_c491cb2f65a2e1edca984156f1e3f500 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cf9fcddf72c72773b905eaae0c712696 = $(`<div id="html_cf9fcddf72c72773b905eaae0c712696" style="width: 100.0%; height: 100.0%;"><b>MELISSA - Prediccion</b><br>Proximas: 36 horas<br>Viento: 95 kt<br>Presión: nan hPa</div>`)[0];
+                popup_c491cb2f65a2e1edca984156f1e3f500.setContent(html_cf9fcddf72c72773b905eaae0c712696);
+            
+        
+
+        circle_marker_52a727c1351ec1bcf8f3f6001817c00c.bindPopup(popup_c491cb2f65a2e1edca984156f1e3f500)
+        ;
+
+        
+    
+    
+            var circle_marker_b51b9495d6baf5b85c8cb19327a739b2 = L.circleMarker(
+                [28.9, -70.0],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_b103c3686212e85ba8a2fe3080aa93bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6d6c41275d15b37b6a73aa13957daac9 = $(`<div id="html_6d6c41275d15b37b6a73aa13957daac9" style="width: 100.0%; height: 100.0%;"><b>MELISSA - Prediccion</b><br>Proximas: 48 horas<br>Viento: 90 kt<br>Presión: nan hPa</div>`)[0];
+                popup_b103c3686212e85ba8a2fe3080aa93bd.setContent(html_6d6c41275d15b37b6a73aa13957daac9);
+            
+        
+
+        circle_marker_b51b9495d6baf5b85c8cb19327a739b2.bindPopup(popup_b103c3686212e85ba8a2fe3080aa93bd)
+        ;
+
+        
+    
+    
+            var circle_marker_9ad4d2a4a0b901d638a79f6e0bf502c2 = L.circleMarker(
+                [33.8, -64.8],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_5a6934a0117afe907b576a664c81505b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_71e414d0d0f1f4cd59198894fd99e46e = $(`<div id="html_71e414d0d0f1f4cd59198894fd99e46e" style="width: 100.0%; height: 100.0%;"><b>MELISSA - Prediccion</b><br>Proximas: 60 horas<br>Viento: 85 kt<br>Presión: nan hPa</div>`)[0];
+                popup_5a6934a0117afe907b576a664c81505b.setContent(html_71e414d0d0f1f4cd59198894fd99e46e);
+            
+        
+
+        circle_marker_9ad4d2a4a0b901d638a79f6e0bf502c2.bindPopup(popup_5a6934a0117afe907b576a664c81505b)
+        ;
+
+        
+    
+    
+            var circle_marker_1d0e2c686ff778d91613cae2143dbade = L.circleMarker(
+                [39.0, -58.3],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_a1320e9fd69f81fe1bc40a14524cca75 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_70fb38ef2668b17b22b0fa17c1dea297 = $(`<div id="html_70fb38ef2668b17b22b0fa17c1dea297" style="width: 100.0%; height: 100.0%;"><b>MELISSA - Prediccion</b><br>Proximas: 72 horas<br>Viento: 70 kt<br>Presión: nan hPa</div>`)[0];
+                popup_a1320e9fd69f81fe1bc40a14524cca75.setContent(html_70fb38ef2668b17b22b0fa17c1dea297);
+            
+        
+
+        circle_marker_1d0e2c686ff778d91613cae2143dbade.bindPopup(popup_a1320e9fd69f81fe1bc40a14524cca75)
+        ;
+
+        
+    
+    
+            var circle_marker_bdb87ba33b0e7ac1b0b723d1f91cb3fd = L.circleMarker(
+                [48.4, -42.2],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_975fa50c001b136a079b4683f63fd3c1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_803aef18aeb70b4d2362672c278183f1 = $(`<div id="html_803aef18aeb70b4d2362672c278183f1" style="width: 100.0%; height: 100.0%;"><b>MELISSA - Prediccion</b><br>Proximas: 96 horas<br>Viento: 50 kt<br>Presión: nan hPa</div>`)[0];
+                popup_975fa50c001b136a079b4683f63fd3c1.setContent(html_803aef18aeb70b4d2362672c278183f1);
+            
+        
+
+        circle_marker_bdb87ba33b0e7ac1b0b723d1f91cb3fd.bindPopup(popup_975fa50c001b136a079b4683f63fd3c1)
+        ;
+
+        
+    
+    
+            var circle_marker_cf5d5019f111527fdbba72dd1b7e2144 = L.circleMarker(
+                [54.8, -25.1],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+    
+        var popup_5e950dd525a97dbbd2d16e6794bfab2d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0433ddcb0c520049159f19288bfe839a = $(`<div id="html_0433ddcb0c520049159f19288bfe839a" style="width: 100.0%; height: 100.0%;"><b>MELISSA - Prediccion</b><br>Proximas: 120 horas<br>Viento: 40 kt<br>Presión: nan hPa</div>`)[0];
+                popup_5e950dd525a97dbbd2d16e6794bfab2d.setContent(html_0433ddcb0c520049159f19288bfe839a);
+            
+        
+
+        circle_marker_cf5d5019f111527fdbba72dd1b7e2144.bindPopup(popup_5e950dd525a97dbbd2d16e6794bfab2d)
+        ;
+
+        
+    
+    
+            var poly_line_b21df1f6a7c2fd50919ba10731481c71 = L.polyline(
+                [[18.2, -77.9], [18.5, -77.7], [19.9, -76.7], [22.2, -75.3], [25.0, -73.2], [28.9, -70.0], [33.8, -64.8], [39.0, -58.3], [48.4, -42.2], [54.8, -25.1]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": "3, 3", "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_bcee3e844201c57b1dce98979758ca7b);
+        
+</script>
+</html>

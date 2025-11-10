@@ -1,0 +1,85 @@
+{
+   "id": "AL982025",
+   "operational_id": "AL982025",
+   "name": "98L",
+   "year": 2025,
+   "season": 2025,
+   "basin": "north_atlantic",
+   "source_info": "NHC Hurricane Database",
+   "realtime": true,
+   "invest": true,
+   "source_method": "NHC's Automated Tropical Cyclone Forecasting System (ATCF)",
+   "source_url": "https://ftp.nhc.noaa.gov/atcf/btk/",
+   "source": "hurdat",
+   "jtwc_source": "N/A",
+   "time": [
+      "2025-10-17 12:00:00",
+      "2025-10-17 18:00:00",
+      "2025-10-18 00:00:00",
+      "2025-10-18 06:00:00",
+      "2025-10-18 12:00:00"
+   ],
+   "extra_obs": [
+      0,
+      0,
+      0,
+      0,
+      0
+   ],
+   "special": [
+      "",
+      "",
+      "",
+      "",
+      ""
+   ],
+   "type": [
+      "DB",
+      "DB",
+      "DB",
+      "DB",
+      "DB"
+   ],
+   "lat": [
+      10.6,
+      10.9,
+      11.2,
+      11.5,
+      11.7
+   ],
+   "lon": [
+      -41.5,
+      -43.3,
+      -45.5,
+      -47.6,
+      -49.9
+   ],
+   "vmax": [
+      25,
+      25,
+      25,
+      25,
+      30
+   ],
+   "mslp": [
+      1011,
+      1011,
+      1011,
+      1011,
+      1011
+   ],
+   "wmo_basin": [
+      "north_atlantic",
+      "north_atlantic",
+      "north_atlantic",
+      "north_atlantic",
+      "north_atlantic"
+   ],
+   "ace": 0.0,
+   "prob_2day": "0%",
+   "prob_7day": "30%",
+   "risk_2day": "Low",
+   "risk_7day": "Low",
+   "fecha_hora de captura": "2025-10-18 10:25:18.318114-06:00",
+   "zona horaria de captura": "America/Mexico_City"
+}

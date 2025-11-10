@@ -22,7 +22,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # dominio del frontend
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -135,7 +135,7 @@ def get_storms():
         if os.path.exists(filepath):
             with open(filepath, "r") as archivo:
                 data_storm = json.load(archivo)
-            return {"Info Tormentas": data_storm["Info Tormentas"]}
+            return data_storm
 
         realtime_obj = realtime.Realtime()
         lista_tormentas = realtime_obj.list_active_storms()
@@ -146,8 +146,11 @@ def get_storms():
 
         with open(filepath, "w") as archivo:
             json.dump(tormentas, archivo, indent=3, default=str)
+        
+        with open(filepath, "r") as archivo:
+            data_storm = json.load(archivo)
+        return data_storm
 
-        return {"Info Tormentas": tormentas["Info Tormentas"]}
     except Exception as exc:
         log.error(CrearMsgLog(404, f"data/", exc))
         return PlainTextResponse(content=f"Hubo un error al obtener la data", status_code=404)
@@ -294,7 +297,7 @@ def get_data_storm(storm_name: str):
                 data_storm = data_diccionario(data_storm)
 
             log.info(CrearMsgLog(200, f"data/{storm_name}", "Successful request"))
-            return {"Info Tormenta": data_storm}
+            return data_storm
 
         realtime_obj = realtime.Realtime()
         storm = realtime_obj.get_storm(storm_name)
@@ -308,7 +311,7 @@ def get_data_storm(storm_name: str):
             json.dump(tormenta, archivo, indent=3, default=str)
 
         log.info(CrearMsgLog(200, f"data/{storm_name}", "Successful request"))
-        return {"Info Tormenta": data_storm}
+        return data_storm
     
     except Exception as exc:
         log.error(CrearMsgLog(404, f"data/{storm_name}", exc))
@@ -434,16 +437,17 @@ def dynamic_strom_name_map(storm_name: str):
 @app.get("/data_date/{date}")
 def data_date_storm(date: str):
     try:
-        dir = os.path.join("data", date, "Tormentas", "00_00.json")
+        HourNames = ["00_00", "03_00", "06_00", "09_00", "12_00", "15_00", "18_00", "21_00"]
+        for hour in HourNames:
+            dir = os.path.join("data", date, "Tormentas", hour+".json")
+            if os.path.exists(dir):
+                with open(dir, "r") as archivo:
+                    data_storm = json.load(archivo)
 
-        if os.path.exists(dir):
-            with open(dir, "r") as archivo:
-                data_storm = json.load(archivo)
+                log.info(CrearMsgLog(200, f"data_date/{date}", "Successful request"))
+                return data_storm
 
-            log.info(CrearMsgLog(200, f"/data_date/{date}", "Successful request"))
-            return {"Info Tormenta": data_storm}
-        
-        log.info(CrearMsgLog(200, f"/data_date/{date}", f"Sin informacion de tormentas el {date}"))
+        log.info(CrearMsgLog(200, f"data_date/{date}", f"Sin informacion de tormentas el {date}"))
         return PlainTextResponse(content=f"No tengo registro de tormentas el {date}", status_code=404)
 
     except Exception as exc:
@@ -453,15 +457,17 @@ def data_date_storm(date: str):
 @app.get("/data_date/{date}/{storm_name}")
 def data_date_storm(date: str, storm_name: str):
     try:
-        dir = os.path.join("data", date, storm_name, "00_00.json")
+        HourNames = ["00_00", "03_00", "06_00", "09_00", "12_00", "15_00", "18_00", "21_00"]
+        for hour in HourNames:
+            dir = os.path.join("data", date, storm_name, hour+".json")
 
-        if os.path.exists(dir):
-            with open(dir, "r") as archivo:
-                data_storm = json.load(archivo)
-                data_storm = data_diccionario(data_storm)
+            if os.path.exists(dir):
+                with open(dir, "r") as archivo:
+                    data_storm = json.load(archivo)
+                    data_storm = data_diccionario(data_storm)
 
-            log.info(CrearMsgLog(200, f"/data_date/{date}/{storm_name}", "Successful request"))
-            return {"Info Tormenta": data_storm}
+                log.info(CrearMsgLog(200, f"/data_date/{date}/{storm_name}", "Successful request"))
+                return data_storm
         
         log.info(CrearMsgLog(200, f"/data_date/{date}/{storm_name}", f"Sin informacion de tormenta {storm_name} el {date}"))
         return PlainTextResponse(content=f"No tengo registro de tormenta {storm_name} el {date}", status_code=404)
@@ -480,13 +486,13 @@ def data_date_storm(date: str, storm_name: str):
         gif_path = os.path.join(base_dir, "Trayectoria.gif")
 
         if os.path.exists(gif_path):
-            log.info(CrearMsgLog(200, f"/image_date/{date}/{storm_name}", "Successful request"))
+            log.info(CrearMsgLog(200, f"image_date/{date}/{storm_name}", "Successful request"))
             return FileResponse(gif_path, media_type="image/gif")
 
         png_files = sorted(glob.glob(os.path.join(base_dir, "*.png")))
 
         if not png_files:
-            log.info(CrearMsgLog(404, f"/image_date/{date}/{storm_name}",
+            log.info(CrearMsgLog(404, f"image_date/{date}/{storm_name}",
                                  f"Sin imágenes para {storm_name} el {date}"))
             return PlainTextResponse(
                 content=f"No tengo registro de tormenta {storm_name} el {date}",
@@ -500,13 +506,13 @@ def data_date_storm(date: str, storm_name: str):
             format="GIF",
             append_images=frames,
             save_all=True,
-            duration=100,
+            duration=500,
             loop=0
         )
 
-        log.info(CrearMsgLog(200, f"/image_date/{date}/{storm_name}", "GIF generado exitosamente"))
+        log.info(CrearMsgLog(200, f"image_date/{date}/{storm_name}", "GIF generado exitosamente"))
         return FileResponse(gif_path, media_type="image/gif")
 
     except Exception as exc:
-        log.error(CrearMsgLog(500, f"/image_date/{date}/{storm_name}", str(exc)))
+        log.error(CrearMsgLog(500, f"image_date/{date}/{storm_name}", str(exc)))
         return PlainTextResponse(content=f"Error al obtener la data", status_code=500)

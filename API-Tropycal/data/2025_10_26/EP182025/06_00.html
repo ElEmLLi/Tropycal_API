@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_00d766f4842932c11869ce5cf821ab53 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_00d766f4842932c11869ce5cf821ab53" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_00d766f4842932c11869ce5cf821ab53 = L.map(
+                "map_00d766f4842932c11869ce5cf821ab53",
+                {
+                    center: [10.3, -104.9],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e41be5c0912362af7dfd3d1c5ef7d942 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e41be5c0912362af7dfd3d1c5ef7d942.addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+            var circle_marker_47fa9bfe2df0988408e65c1668f7206e = L.circleMarker(
+                [10.3, -104.9],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_894e00f989e7f1053b2923d09e0e576c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_39adc64f6df8596bdaf6689b2f56c04c = $(`<div id="html_39adc64f6df8596bdaf6689b2f56c04c" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-22 12:00:00<br>Viento: 15 kt<br>Presión: nan hPa</div>`)[0];
+                popup_894e00f989e7f1053b2923d09e0e576c.setContent(html_39adc64f6df8596bdaf6689b2f56c04c);
+            
+        
+
+        circle_marker_47fa9bfe2df0988408e65c1668f7206e.bindPopup(popup_894e00f989e7f1053b2923d09e0e576c)
+        ;
+
+        
+    
+    
+            var circle_marker_b75ec2e763b3ebf679286fa1e44bdbe8 = L.circleMarker(
+                [10.3, -105.8],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_47d2fbda9d882437829d3ff4ef78af45 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_046e3ccdda588760b179106b816b5854 = $(`<div id="html_046e3ccdda588760b179106b816b5854" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-22 18:00:00<br>Viento: 15 kt<br>Presión: nan hPa</div>`)[0];
+                popup_47d2fbda9d882437829d3ff4ef78af45.setContent(html_046e3ccdda588760b179106b816b5854);
+            
+        
+
+        circle_marker_b75ec2e763b3ebf679286fa1e44bdbe8.bindPopup(popup_47d2fbda9d882437829d3ff4ef78af45)
+        ;
+
+        
+    
+    
+            var circle_marker_1c72243c6ac3edea7e284c0435f6d0c2 = L.circleMarker(
+                [10.8, -107.1],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_e41d898f234dbeffe3875f37185acfb3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d43a3edfaec9e1c5e7652b36b8c1f49d = $(`<div id="html_d43a3edfaec9e1c5e7652b36b8c1f49d" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-23 00:00:00<br>Viento: 15 kt<br>Presión: nan hPa</div>`)[0];
+                popup_e41d898f234dbeffe3875f37185acfb3.setContent(html_d43a3edfaec9e1c5e7652b36b8c1f49d);
+            
+        
+
+        circle_marker_1c72243c6ac3edea7e284c0435f6d0c2.bindPopup(popup_e41d898f234dbeffe3875f37185acfb3)
+        ;
+
+        
+    
+    
+            var circle_marker_01d3d092a146a01cf35ac621f44da608 = L.circleMarker(
+                [11.5, -108.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_56872a87e602bec981edd7e679bab3e8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_69394d9a29e3b4d6c85b245891a3d7cb = $(`<div id="html_69394d9a29e3b4d6c85b245891a3d7cb" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-23 06:00:00<br>Viento: 15 kt<br>Presión: 1009 hPa</div>`)[0];
+                popup_56872a87e602bec981edd7e679bab3e8.setContent(html_69394d9a29e3b4d6c85b245891a3d7cb);
+            
+        
+
+        circle_marker_01d3d092a146a01cf35ac621f44da608.bindPopup(popup_56872a87e602bec981edd7e679bab3e8)
+        ;
+
+        
+    
+    
+            var circle_marker_402b143a83b846bcac662691bbb9d0fe = L.circleMarker(
+                [12.0, -110.0],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_9db4e86149cba5b6fce9a9cd99b214d8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4a9745964c76586401e1a04e3e0c0f67 = $(`<div id="html_4a9745964c76586401e1a04e3e0c0f67" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-23 12:00:00<br>Viento: 20 kt<br>Presión: 1009 hPa</div>`)[0];
+                popup_9db4e86149cba5b6fce9a9cd99b214d8.setContent(html_4a9745964c76586401e1a04e3e0c0f67);
+            
+        
+
+        circle_marker_402b143a83b846bcac662691bbb9d0fe.bindPopup(popup_9db4e86149cba5b6fce9a9cd99b214d8)
+        ;
+
+        
+    
+    
+            var circle_marker_441a9aeba5d561e3b07a9258e60ffe15 = L.circleMarker(
+                [12.7, -111.1],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_26c007ca9b503405561cada615c4232d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_20c042df6fd956bbc818156af5205c18 = $(`<div id="html_20c042df6fd956bbc818156af5205c18" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-23 18:00:00<br>Viento: 25 kt<br>Presión: 1009 hPa</div>`)[0];
+                popup_26c007ca9b503405561cada615c4232d.setContent(html_20c042df6fd956bbc818156af5205c18);
+            
+        
+
+        circle_marker_441a9aeba5d561e3b07a9258e60ffe15.bindPopup(popup_26c007ca9b503405561cada615c4232d)
+        ;
+
+        
+    
+    
+            var circle_marker_56d1e481aefd124c3d11c4967dff6337 = L.circleMarker(
+                [13.0, -112.2],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_925c464432b9b812b34123c7f1eb4144 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_724447d0823de85bad8339e707970544 = $(`<div id="html_724447d0823de85bad8339e707970544" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-24 00:00:00<br>Viento: 25 kt<br>Presión: 1008 hPa</div>`)[0];
+                popup_925c464432b9b812b34123c7f1eb4144.setContent(html_724447d0823de85bad8339e707970544);
+            
+        
+
+        circle_marker_56d1e481aefd124c3d11c4967dff6337.bindPopup(popup_925c464432b9b812b34123c7f1eb4144)
+        ;
+
+        
+    
+    
+            var circle_marker_48b461c50d2f9362b9df9931f8c59068 = L.circleMarker(
+                [13.1, -113.3],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_2036efc8e9eba2a6444d64117c97144a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ebf1e38f5b7681913ef3ca6077402213 = $(`<div id="html_ebf1e38f5b7681913ef3ca6077402213" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-24 06:00:00<br>Viento: 30 kt<br>Presión: 1007 hPa</div>`)[0];
+                popup_2036efc8e9eba2a6444d64117c97144a.setContent(html_ebf1e38f5b7681913ef3ca6077402213);
+            
+        
+
+        circle_marker_48b461c50d2f9362b9df9931f8c59068.bindPopup(popup_2036efc8e9eba2a6444d64117c97144a)
+        ;
+
+        
+    
+    
+            var circle_marker_4d8f7be5f0ff9f999479b68a91fc2eb5 = L.circleMarker(
+                [13.2, -114.4],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_58e5ad52330513049faa9186863da8d4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a2a21d733fffc1aedbcf656eb049261f = $(`<div id="html_a2a21d733fffc1aedbcf656eb049261f" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-24 12:00:00<br>Viento: 30 kt<br>Presión: 1007 hPa</div>`)[0];
+                popup_58e5ad52330513049faa9186863da8d4.setContent(html_a2a21d733fffc1aedbcf656eb049261f);
+            
+        
+
+        circle_marker_4d8f7be5f0ff9f999479b68a91fc2eb5.bindPopup(popup_58e5ad52330513049faa9186863da8d4)
+        ;
+
+        
+    
+    
+            var circle_marker_5aef55170bf7c6689deafce3613f0d8f = L.circleMarker(
+                [13.2, -115.6],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_025b8dd6594bf02fce2af2573f0f4233 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9dc4167ed7984d04f7ce6595160818dd = $(`<div id="html_9dc4167ed7984d04f7ce6595160818dd" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-24 18:00:00<br>Viento: 30 kt<br>Presión: 1007 hPa</div>`)[0];
+                popup_025b8dd6594bf02fce2af2573f0f4233.setContent(html_9dc4167ed7984d04f7ce6595160818dd);
+            
+        
+
+        circle_marker_5aef55170bf7c6689deafce3613f0d8f.bindPopup(popup_025b8dd6594bf02fce2af2573f0f4233)
+        ;
+
+        
+    
+    
+            var circle_marker_235c0f580a72fd799bf9b066d1eb5143 = L.circleMarker(
+                [13.2, -116.3],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_601233f7f757daea40d9ca99382beb84 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_40f93934969c664829bae94f06dc167e = $(`<div id="html_40f93934969c664829bae94f06dc167e" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-25 00:00:00<br>Viento: 30 kt<br>Presión: 1007 hPa</div>`)[0];
+                popup_601233f7f757daea40d9ca99382beb84.setContent(html_40f93934969c664829bae94f06dc167e);
+            
+        
+
+        circle_marker_235c0f580a72fd799bf9b066d1eb5143.bindPopup(popup_601233f7f757daea40d9ca99382beb84)
+        ;
+
+        
+    
+    
+            var circle_marker_3def3f08943a22a39ca1eda18df48927 = L.circleMarker(
+                [13.3, -117.1],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_fd5bb90cdfcb1c97157fdba7a6dee69c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a3baf0b27d20ceaf2990d9b5ee7741d8 = $(`<div id="html_a3baf0b27d20ceaf2990d9b5ee7741d8" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-25 06:00:00<br>Viento: 35 kt<br>Presión: 1006 hPa</div>`)[0];
+                popup_fd5bb90cdfcb1c97157fdba7a6dee69c.setContent(html_a3baf0b27d20ceaf2990d9b5ee7741d8);
+            
+        
+
+        circle_marker_3def3f08943a22a39ca1eda18df48927.bindPopup(popup_fd5bb90cdfcb1c97157fdba7a6dee69c)
+        ;
+
+        
+    
+    
+            var circle_marker_037fc7cce346a420840b37ae9b1d1594 = L.circleMarker(
+                [13.4, -117.8],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_450f30e67125a8e03ab468e380bc84f8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6884d42e812dfc0213ba00def4514bff = $(`<div id="html_6884d42e812dfc0213ba00def4514bff" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-25 12:00:00<br>Viento: 45 kt<br>Presión: 1001 hPa</div>`)[0];
+                popup_450f30e67125a8e03ab468e380bc84f8.setContent(html_6884d42e812dfc0213ba00def4514bff);
+            
+        
+
+        circle_marker_037fc7cce346a420840b37ae9b1d1594.bindPopup(popup_450f30e67125a8e03ab468e380bc84f8)
+        ;
+
+        
+    
+    
+            var circle_marker_15f193cae45acd9e19f06e5a681ada2f = L.circleMarker(
+                [13.5, -118.6],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_2251f8d480cbf04adcf93aef1c91659a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_47f35286a1292411e3364eee3e4576a0 = $(`<div id="html_47f35286a1292411e3364eee3e4576a0" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-25 18:00:00<br>Viento: 45 kt<br>Presión: 1001 hPa</div>`)[0];
+                popup_2251f8d480cbf04adcf93aef1c91659a.setContent(html_47f35286a1292411e3364eee3e4576a0);
+            
+        
+
+        circle_marker_15f193cae45acd9e19f06e5a681ada2f.bindPopup(popup_2251f8d480cbf04adcf93aef1c91659a)
+        ;
+
+        
+    
+    
+            var circle_marker_575b7330fad8e3bc8214215ac6a672b3 = L.circleMarker(
+                [13.5, -119.1],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_5c5d70da702a72477f7a36c36423a5ff = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_948724aa0b0642c6a52ccb9851a53280 = $(`<div id="html_948724aa0b0642c6a52ccb9851a53280" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-26 00:00:00<br>Viento: 45 kt<br>Presión: 1001 hPa</div>`)[0];
+                popup_5c5d70da702a72477f7a36c36423a5ff.setContent(html_948724aa0b0642c6a52ccb9851a53280);
+            
+        
+
+        circle_marker_575b7330fad8e3bc8214215ac6a672b3.bindPopup(popup_5c5d70da702a72477f7a36c36423a5ff)
+        ;
+
+        
+    
+    
+            var circle_marker_252ea71d5c1fb7ee51401c391db8287c = L.circleMarker(
+                [13.5, -119.5],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_b05d5815b8816d469960607159adc3ef = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0a42c80eb977733b7eae461f02e381a8 = $(`<div id="html_0a42c80eb977733b7eae461f02e381a8" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-26 06:00:00<br>Viento: 45 kt<br>Presión: 1002 hPa</div>`)[0];
+                popup_b05d5815b8816d469960607159adc3ef.setContent(html_0a42c80eb977733b7eae461f02e381a8);
+            
+        
+
+        circle_marker_252ea71d5c1fb7ee51401c391db8287c.bindPopup(popup_b05d5815b8816d469960607159adc3ef)
+        ;
+
+        
+    
+    
+            var circle_marker_8a62a2330b25f658098c26aff16ed5c9 = L.circleMarker(
+                [13.6, -119.8],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_80bc1fb04edf1a8068b816bab72c3546 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_19eeb02acec2bfb7595da6a0a0a6d5cf = $(`<div id="html_19eeb02acec2bfb7595da6a0a0a6d5cf" style="width: 100.0%; height: 100.0%;"><b>SONIA</b><br>Fecha: 2025-10-26 12:00:00<br>Viento: 45 kt<br>Presión: 1002 hPa</div>`)[0];
+                popup_80bc1fb04edf1a8068b816bab72c3546.setContent(html_19eeb02acec2bfb7595da6a0a0a6d5cf);
+            
+        
+
+        circle_marker_8a62a2330b25f658098c26aff16ed5c9.bindPopup(popup_80bc1fb04edf1a8068b816bab72c3546)
+        ;
+
+        
+    
+    
+            var poly_line_61a446412ba1f2ddc6d9c25e3d4b2377 = L.polyline(
+                [[10.3, -104.9], [10.3, -105.8], [10.8, -107.1], [11.5, -108.7], [12.0, -110.0], [12.7, -111.1], [13.0, -112.2], [13.1, -113.3], [13.2, -114.4], [13.2, -115.6], [13.2, -116.3], [13.3, -117.1], [13.4, -117.8], [13.5, -118.6], [13.5, -119.1], [13.5, -119.5], [13.6, -119.8]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+            var marker_0b76c9e02005b10812a41c00199c2102 = L.marker(
+                [13.6, -119.8],
+                {
+}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_af172d84d3609b2e981cd04481946dfb = L.popup({
+  "maxWidth": 100,
+});
+
+        
+            
+                var html_8c821055cddfc00ec0e4d24fceb8cf35 = $(`<div id="html_8c821055cddfc00ec0e4d24fceb8cf35" style="width: 100.0%; height: 100.0%;">Ubicacion actual de la tormenta</div>`)[0];
+                popup_af172d84d3609b2e981cd04481946dfb.setContent(html_8c821055cddfc00ec0e4d24fceb8cf35);
+            
+        
+
+        marker_0b76c9e02005b10812a41c00199c2102.bindPopup(popup_af172d84d3609b2e981cd04481946dfb)
+        ;
+
+        
+    
+    
+            var circle_marker_08d917f73674064c436923009432d741 = L.circleMarker(
+                [13.4, -119.4],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_4961a6d9df93b7df7d60f5c982101181 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_15076d0951f831a9b2cfea734c694dbc = $(`<div id="html_15076d0951f831a9b2cfea734c694dbc" style="width: 100.0%; height: 100.0%;"><b>SONIA - Prediccion</b><br>Proximas: 0 horas<br>Viento: 45 kt<br>Presión: nan hPa</div>`)[0];
+                popup_4961a6d9df93b7df7d60f5c982101181.setContent(html_15076d0951f831a9b2cfea734c694dbc);
+            
+        
+
+        circle_marker_08d917f73674064c436923009432d741.bindPopup(popup_4961a6d9df93b7df7d60f5c982101181)
+        ;
+
+        
+    
+    
+            var circle_marker_284feec465e5fa26085481d0e3402504 = L.circleMarker(
+                [13.4, -119.5],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_4dd3cf432094f77ed49ba7094eb07e16 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f038cdbaed3c286631099ca4003baad2 = $(`<div id="html_f038cdbaed3c286631099ca4003baad2" style="width: 100.0%; height: 100.0%;"><b>SONIA - Prediccion</b><br>Proximas: 3 horas<br>Viento: 45 kt<br>Presión: 1002 hPa</div>`)[0];
+                popup_4dd3cf432094f77ed49ba7094eb07e16.setContent(html_f038cdbaed3c286631099ca4003baad2);
+            
+        
+
+        circle_marker_284feec465e5fa26085481d0e3402504.bindPopup(popup_4dd3cf432094f77ed49ba7094eb07e16)
+        ;
+
+        
+    
+    
+            var circle_marker_edde375f8e7f79772e89e06a0aef549f = L.circleMarker(
+                [13.5, -119.9],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_f670559774afcdd23bcf62d49263e6d9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d2322bb163efb9eae8e89c54a1f98869 = $(`<div id="html_d2322bb163efb9eae8e89c54a1f98869" style="width: 100.0%; height: 100.0%;"><b>SONIA - Prediccion</b><br>Proximas: 12 horas<br>Viento: 50 kt<br>Presión: nan hPa</div>`)[0];
+                popup_f670559774afcdd23bcf62d49263e6d9.setContent(html_d2322bb163efb9eae8e89c54a1f98869);
+            
+        
+
+        circle_marker_edde375f8e7f79772e89e06a0aef549f.bindPopup(popup_f670559774afcdd23bcf62d49263e6d9)
+        ;
+
+        
+    
+    
+            var circle_marker_c36ba6e773590cefb4af371f1bf716fc = L.circleMarker(
+                [13.9, -120.6],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_d3c5559fdf6cf2fe1247b57c762bc35d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b87ee850c429ef2e2d331af7e447c73e = $(`<div id="html_b87ee850c429ef2e2d331af7e447c73e" style="width: 100.0%; height: 100.0%;"><b>SONIA - Prediccion</b><br>Proximas: 24 horas<br>Viento: 55 kt<br>Presión: nan hPa</div>`)[0];
+                popup_d3c5559fdf6cf2fe1247b57c762bc35d.setContent(html_b87ee850c429ef2e2d331af7e447c73e);
+            
+        
+
+        circle_marker_c36ba6e773590cefb4af371f1bf716fc.bindPopup(popup_d3c5559fdf6cf2fe1247b57c762bc35d)
+        ;
+
+        
+    
+    
+            var circle_marker_c7abeca012593d933aa457d8397e9f9e = L.circleMarker(
+                [14.3, -121.6],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_da2e9b6efe2a1715ab8cf1095c597a0d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1554383c8a4e63b0a2589be362e1a8a4 = $(`<div id="html_1554383c8a4e63b0a2589be362e1a8a4" style="width: 100.0%; height: 100.0%;"><b>SONIA - Prediccion</b><br>Proximas: 36 horas<br>Viento: 55 kt<br>Presión: nan hPa</div>`)[0];
+                popup_da2e9b6efe2a1715ab8cf1095c597a0d.setContent(html_1554383c8a4e63b0a2589be362e1a8a4);
+            
+        
+
+        circle_marker_c7abeca012593d933aa457d8397e9f9e.bindPopup(popup_da2e9b6efe2a1715ab8cf1095c597a0d)
+        ;
+
+        
+    
+    
+            var circle_marker_eaad09cb23e34bb5b365bec5a9bd7147 = L.circleMarker(
+                [14.7, -122.8],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_fbe2829deaec32358886c46432c07f11 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fd464cbd47a562bf8e8b7df1f1818ce2 = $(`<div id="html_fd464cbd47a562bf8e8b7df1f1818ce2" style="width: 100.0%; height: 100.0%;"><b>SONIA - Prediccion</b><br>Proximas: 48 horas<br>Viento: 45 kt<br>Presión: nan hPa</div>`)[0];
+                popup_fbe2829deaec32358886c46432c07f11.setContent(html_fd464cbd47a562bf8e8b7df1f1818ce2);
+            
+        
+
+        circle_marker_eaad09cb23e34bb5b365bec5a9bd7147.bindPopup(popup_fbe2829deaec32358886c46432c07f11)
+        ;
+
+        
+    
+    
+            var circle_marker_8e7e4c153a1e7c1379a273a1e2d2765d = L.circleMarker(
+                [14.8, -124.3],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_dfff54a3ba6bf9a1d784cdc46ddad94f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ad9cbce71fd3e50bcd2b764393e7f3c5 = $(`<div id="html_ad9cbce71fd3e50bcd2b764393e7f3c5" style="width: 100.0%; height: 100.0%;"><b>SONIA - Prediccion</b><br>Proximas: 60 horas<br>Viento: 35 kt<br>Presión: nan hPa</div>`)[0];
+                popup_dfff54a3ba6bf9a1d784cdc46ddad94f.setContent(html_ad9cbce71fd3e50bcd2b764393e7f3c5);
+            
+        
+
+        circle_marker_8e7e4c153a1e7c1379a273a1e2d2765d.bindPopup(popup_dfff54a3ba6bf9a1d784cdc46ddad94f)
+        ;
+
+        
+    
+    
+            var circle_marker_6a4d23a9f41972093cb2cb070b71e989 = L.circleMarker(
+                [14.9, -126.0],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_f353618831271b5eaaaa1d8d3851bc34 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8f7f5b36aa5c5d526c0a035369ca78be = $(`<div id="html_8f7f5b36aa5c5d526c0a035369ca78be" style="width: 100.0%; height: 100.0%;"><b>SONIA - Prediccion</b><br>Proximas: 72 horas<br>Viento: 30 kt<br>Presión: nan hPa</div>`)[0];
+                popup_f353618831271b5eaaaa1d8d3851bc34.setContent(html_8f7f5b36aa5c5d526c0a035369ca78be);
+            
+        
+
+        circle_marker_6a4d23a9f41972093cb2cb070b71e989.bindPopup(popup_f353618831271b5eaaaa1d8d3851bc34)
+        ;
+
+        
+    
+    
+            var circle_marker_ef0738fd87ef956dd570f9f030ce9824 = L.circleMarker(
+                [14.5, -129.7],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": "3, 3", "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+    
+        var popup_0c889fdd44e9f62dc2237446d32602e2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d90433199432b755ab8b273acbe8220d = $(`<div id="html_d90433199432b755ab8b273acbe8220d" style="width: 100.0%; height: 100.0%;"><b>SONIA - Prediccion</b><br>Proximas: 96 horas<br>Viento: 25 kt<br>Presión: nan hPa</div>`)[0];
+                popup_0c889fdd44e9f62dc2237446d32602e2.setContent(html_d90433199432b755ab8b273acbe8220d);
+            
+        
+
+        circle_marker_ef0738fd87ef956dd570f9f030ce9824.bindPopup(popup_0c889fdd44e9f62dc2237446d32602e2)
+        ;
+
+        
+    
+    
+            var poly_line_1b1115261fee8d16f2640d92501129c7 = L.polyline(
+                [[13.4, -119.4], [13.4, -119.5], [13.5, -119.9], [13.9, -120.6], [14.3, -121.6], [14.7, -122.8], [14.8, -124.3], [14.9, -126.0], [14.5, -129.7]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": "3, 3", "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_00d766f4842932c11869ce5cf821ab53);
+        
+</script>
+</html>

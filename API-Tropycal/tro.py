@@ -1,7 +1,7 @@
 # Copyright (c) 2025
 # [Pedro Mendoza, Bruno Goñi, Emiliano Sánchez, Valentina Tejeda, Brisa León]
 
-from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse
+from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse, StreamingResponse
 from zoneinfo import ZoneInfo as zi
 from tropycal import realtime
 from fastapi import FastAPI
@@ -9,10 +9,12 @@ import logging as log
 import datetime as dt
 from PIL import Image
 import math as mt
+import zipfile
 import folium
 import glob
 import json
 import os
+import io
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -35,6 +37,49 @@ app.add_middleware(
 
 
 # Funciones ------------------------------------------------------------------
+
+KEY_TRANSLATIONS = {
+    "id": "id",
+    "operational_id": "id_operacional",
+    "name": "nombre",
+    "year": "año",
+    "season": "temporada",
+    "basin": "cuenca",
+    "source_info": "informacion_fuente",
+    "realtime": "tiempo_real",
+    "invest": "investigacion",
+    "source_method": "metodo_fuente",
+    "source_url": "url_fuente",
+    "source": "origen",
+    "jtwc_source": "fuente_jtwc",
+    "time": "tiempo",
+    "extra_obs": "observaciones_extra",
+    "special": "especial",
+    "type": "tipo",
+    "lat": "latitud",
+    "lon": "longitud",
+    "vmax": "vmax",
+    "mslp": "mslp",
+    "wmo_basin": "cuenca_wmo",
+    "ace": "ace",
+    "prob_2day": "prob_2dias",
+    "prob_7day": "prob_7dias",
+    "risk_2day": "riesgo_2dias",
+    "risk_7day": "riesgo_7dias",
+    "fecha_hora de captura": "fecha_hora_captura",
+    "zona horaria de captura": "zona_horaria_captura",
+}
+
+def translate_key(key: str) -> str:
+    return KEY_TRANSLATIONS.get(key, key)
+
+def translate_json(data):
+    if isinstance(data, dict):
+        return {translate_key(k): translate_json(v) for k, v in data.items()}
+    elif isinstance(data, list):
+        return [translate_json(item) for item in data]
+    else:
+        return data
 
 def datestring():
 	now = dt.datetime.now()
@@ -60,6 +105,11 @@ def errornan(lista):
         if not mt.isnan(i) == True: lst.append(i)
     return int(min(lst))
 
+def listaTormentasCompleta(listaActual, listaNueva): 
+    for storm in listaNueva: 
+        if not storm in listaActual: listaActual.append(storm)
+    return listaActual
+
 def calcular_rango_hora(hora):
 	if hora >= 6 and hora <= 305: return "00_00"
 	elif hora >= 306 and hora <= 605: return "03_00"
@@ -76,6 +126,9 @@ def data_diccionario(data_storm):
         "name": data_storm["name"],
         "start_date": str(data_storm["time"][0]),
         "end_date": str(data_storm["time"][-1]),
+        "lon": str(data_storm["lon"][-1]),
+        "lat": str(data_storm["lat"][-1]),
+        "basin": str(data_storm["wmo_basin"][-1]),
         "max_wind": int(max(data_storm["vmax"])),
         "min_mslp": errornan(data_storm["mslp"])}
     return dic_data_storm
@@ -276,8 +329,6 @@ def dynamic_storm_map():
         log.error(CrearMsgLog(404, f"dynamic/", exc))
         return PlainTextResponse(content=f"Hubo un error al obtener la data", status_code=500)
 
-
-
 # Rutas de tormentas especificas ------------------------------------------------------------------
 
 @app.get("/data/{storm_name}")
@@ -346,6 +397,7 @@ def get_storm_map_image(storm_name: str):
 
         realtime_obj = realtime.Realtime()
         storm = realtime_obj.get_storm(storm_name)
+            
         storm.plot_forecast_realtime(save_path=filepath)
 
         log.info(CrearMsgLog(200, f"images/{storm_name}", "Successful request"))
@@ -443,48 +495,75 @@ def dynamic_strom_name_map(storm_name: str):
 def data_date_storm(date: str):
     try:
         HourNames = ["00_00", "03_00", "06_00", "09_00", "12_00", "15_00", "18_00", "21_00"]
+        StormsLst = []
         for hour in HourNames:
-            dir = os.path.join("data", date, "Tormentas", hour+".json")
-            if os.path.exists(dir):
-                with open(dir, "r") as archivo:
+            filepath = os.path.join("data", date, "Tormentas", hour + ".json")
+
+            if os.path.exists(filepath):
+                with open(filepath, "r") as archivo:
                     data_storm = json.load(archivo)
+                    infStorms = data_storm.get("Info Tormentas", [])
+                    StormsLst = listaTormentasCompleta(StormsLst, infStorms)
 
-                log.info(CrearMsgLog(200, f"data_date/{date}", "Successful request"))
-                return data_storm
+        if len(StormsLst) == 0: 
+            log.info(CrearMsgLog(200, f"data_date/{date}", f"Sin informacion de tormentas el {date}"))
+            return PlainTextResponse(content=f"No tengo registro de tormentas el {date}", status_code=404)
+        
+        response_data = {"Info Tormentas": StormsLst}
 
-        log.info(CrearMsgLog(200, f"data_date/{date}", f"Sin informacion de tormentas el {date}"))
-        return PlainTextResponse(content=f"No tengo registro de tormentas el {date}", status_code=404)
+        log.info(CrearMsgLog(200, f"data_date/{date}", "Successful request"))
+        return response_data
 
     except Exception as exc:
-        log.error(CrearMsgLog(404, f"data_date/{date}", exc))
-        return PlainTextResponse(content=f"Error al obtener la data", status_code=500)
+        log.error(CrearMsgLog(500, f"data_date/{date}", exc))
+        return PlainTextResponse(content="Error al obtener la data", status_code=500)
 
-@app.get("/data_date/{date}/{storm_name}")
-def data_date_storm(date: str, storm_name: str):
+@app.get("/hour_date/{date}/{storm_name}")
+def hour_date_storm(date: str, storm_name: str):
     try:
         HourNames = ["00_00", "03_00", "06_00", "09_00", "12_00", "15_00", "18_00", "21_00"]
+        hours_found = []
+
         for hour in HourNames:
-            dir = os.path.join("data", date, storm_name, hour+".json")
+            file_path = os.path.join("data", date, storm_name, hour + ".json")
+            if os.path.exists(file_path):
+                hours_found.append(hour)
 
-            if os.path.exists(dir):
-                with open(dir, "r") as archivo:
-                    data_storm = json.load(archivo)
-                    data_storm = data_diccionario(data_storm)
+        if len(hours_found) == 0:
+            log.info(CrearMsgLog(404, f"/hour_date/{date}/{storm_name}", "Sin informacion de horas registradas"))
+            return hours_found
 
-                log.info(CrearMsgLog(200, f"/data_date/{date}/{storm_name}", "Successful request"))
-                return data_storm
+        log.info(CrearMsgLog(200, f"/hour_date/{date}/{storm_name}", "Horas encontradas"))
+        return hours_found
+
+    except Exception as exc:
+        log.error(CrearMsgLog(500, f"/hour_date/{date}/{storm_name}", exc))
+        return PlainTextResponse(content=f"Error al obtener las horas", status_code=500)
+
+@app.get("/data_date/{date}/{storm_name}/{hour}")
+def data_date_storm(date: str, storm_name: str, hour: str):
+    try:
+        dir = os.path.join("data", date, storm_name, hour + ".json")
+
+        if os.path.exists(dir):
+            with open(dir, "r") as archivo:
+                data_storm = json.load(archivo)
+                data_storm = data_diccionario(data_storm)
+
+            log.info(CrearMsgLog(200, f"/data_date/{date}/{storm_name}/{hour}", "Successful request"))
+            return data_storm
         
-        log.info(CrearMsgLog(200, f"/data_date/{date}/{storm_name}", f"Sin informacion de tormenta {storm_name} el {date}"))
+        log.info(CrearMsgLog(200, f"/data_date/{date}/{storm_name}/{hour}", f"Sin informacion de tormenta {storm_name} el {date}"))
         return PlainTextResponse(content=f"No tengo registro de tormenta {storm_name} el {date}", status_code=404)
 
     except Exception as exc:
-        log.error(CrearMsgLog(404, f"data_date/{date}/{storm_name}", exc))
+        log.error(CrearMsgLog(404, f"data_date/{date}/{storm_name}/{hour}", exc))
         return PlainTextResponse(content=f"Error al obtener la data", status_code=500)
 
 
 # Trabajar un gift de todas las png que haya en ese dia de esa tormenta ----
 
-@app.get("/image_date/{date}/{storm_name}")
+"""@app.get("/image_date/{date}/{storm_name}")
 def data_date_storm(date: str, storm_name: str):
     try:
         base_dir = os.path.join("data", date, storm_name)
@@ -520,4 +599,82 @@ def data_date_storm(date: str, storm_name: str):
 
     except Exception as exc:
         log.error(CrearMsgLog(500, f"image_date/{date}/{storm_name}", str(exc)))
-        return PlainTextResponse(content=f"Error al obtener la data", status_code=500)
+        return PlainTextResponse(content=f"Error al obtener la data", status_code=500)"""
+
+
+@app.get("/image_date/{date}/{storm_name}/{hour}")
+def image_date(date: str, storm_name: str, hour: str):
+    # Ruta correcta al archivo .png
+    base_dir = os.path.join("data", date, storm_name, f"{hour}.png")
+
+    # Verificar si el archivo existe
+    if os.path.exists(base_dir):
+        log.info(CrearMsgLog(200, f"image_date/{date}/{storm_name}", "Successful request - Imagen encontrada"))
+        return FileResponse(base_dir, media_type="image/png")
+
+    # Si no existe imagen → devolver 404 real
+    log.info(
+        CrearMsgLog(
+            404,
+            f"image_date/{date}/{storm_name}",
+            f"Sin imágenes para {storm_name} en {date} (hora {hour})"
+        )
+    )
+
+    return PlainTextResponse(
+        content=f"No tengo registro de tormenta {storm_name} el {date} en la hora {hour}",
+        status_code=404
+    )
+
+
+@app.get("/TraducirJson/{date}/{storm_name}/{hour}")
+def traducir_json(date: str, storm_name: str, hour: str):
+
+    # Ruta del archivo JSON
+    json_path = os.path.join("data", date, storm_name, hour + ".json")
+
+    # Verificación
+    if not os.path.exists(json_path):
+        return PlainTextResponse(content=f"No pude traducir el json {json_path}", status_code=404)
+
+    # Leer el archivo JSON
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    # Traducir claves
+    data_traducida = translate_json(data)
+
+    return data_traducida
+
+
+@app.get("/zipTormenta/{date}/{storm_name}")
+def zip_tormenta(date: str, storm_name: str):
+
+    carpeta_a_comprimir = os.path.join("data", date, storm_name)
+
+    # Verificar que la carpeta existe
+    if not os.path.isdir(carpeta_a_comprimir):
+        raise PlainTextResponse(status_code=404, content="Carpeta no encontrada")
+
+    # Crear buffer en memoria
+    zip_buffer = io.BytesIO()
+
+    # Crear ZIP dentro del buffer
+    with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zipf:
+        for root, _, files in os.walk(carpeta_a_comprimir):
+            for file in files:
+                ruta_completa = os.path.join(root, file)
+                ruta_relativa = os.path.relpath(ruta_completa, carpeta_a_comprimir)
+                zipf.write(ruta_completa, ruta_relativa)
+
+    # Mover puntero al inicio del buffer
+    zip_buffer.seek(0)
+
+    # Devolver como archivo descargable
+    return StreamingResponse(
+        zip_buffer,
+        media_type="application/x-zip-compressed",
+        headers={
+            "Content-Disposition": f"attachment; filename={storm_name}_{date}.zip"
+        }
+    )

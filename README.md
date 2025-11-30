@@ -6,7 +6,7 @@ Tropycal_API es un proyecto desarrollado en python con el objetivo de hacer una 
 ## Librerias y Dependencias
 
 ```
-pip install "fastapi[standard]" tropycal cartopy shapely folium pillow
+pip install "fastapi[standard]" tropycal cartopy shapely folium pillow setuptools
 ```
 
 [FastAPI](https://fastapi.tiangolo.com/#run-it)  

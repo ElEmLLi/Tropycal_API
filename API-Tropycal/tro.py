@@ -373,8 +373,6 @@ def get_data_storm(storm_name: str):
         log.error(CrearMsgLog(404, f"data/{storm_name}", exc))
         return PlainTextResponse(content=f"Hubo un error al obtener la data", status_code=500)
 
-
-
 @app.get("/images/{storm_name}")
 def get_storm_map_image(storm_name: str):
     try:
@@ -559,48 +557,7 @@ def data_date_storm(date: str, storm_name: str, hour: str):
     except Exception as exc:
         log.error(CrearMsgLog(404, f"data_date/{date}/{storm_name}/{hour}", exc))
         return PlainTextResponse(content=f"Error al obtener la data", status_code=500)
-
-
-# Trabajar un gift de todas las png que haya en ese dia de esa tormenta ----
-
-"""@app.get("/image_date/{date}/{storm_name}")
-def data_date_storm(date: str, storm_name: str):
-    try:
-        base_dir = os.path.join("data", date, storm_name)
-        gif_path = os.path.join(base_dir, "Trayectoria.gif")
-
-        if os.path.exists(gif_path):
-            log.info(CrearMsgLog(200, f"image_date/{date}/{storm_name}", "Successful request"))
-            return FileResponse(gif_path, media_type="image/gif")
-
-        png_files = sorted(glob.glob(os.path.join(base_dir, "*.png")))
-
-        if not png_files:
-            log.info(CrearMsgLog(404, f"image_date/{date}/{storm_name}",
-                                 f"Sin imágenes para {storm_name} el {date}"))
-            return PlainTextResponse(
-                content=f"No tengo registro de tormenta {storm_name} el {date}",
-                status_code=404
-            )
-
-        frames = [Image.open(img).convert("RGB") for img in png_files]
-        frame_one = frames[0]
-        frame_one.save(
-            gif_path,
-            format="GIF",
-            append_images=frames,
-            save_all=True,
-            duration=500,
-            loop=0
-        )
-
-        log.info(CrearMsgLog(200, f"image_date/{date}/{storm_name}", "GIF generado exitosamente"))
-        return FileResponse(gif_path, media_type="image/gif")
-
-    except Exception as exc:
-        log.error(CrearMsgLog(500, f"image_date/{date}/{storm_name}", str(exc)))
-        return PlainTextResponse(content=f"Error al obtener la data", status_code=500)"""
-
+    
 
 @app.get("/image_date/{date}/{storm_name}/{hour}")
 def image_date(date: str, storm_name: str, hour: str):
@@ -612,7 +569,6 @@ def image_date(date: str, storm_name: str, hour: str):
         log.info(CrearMsgLog(200, f"image_date/{date}/{storm_name}", "Successful request - Imagen encontrada"))
         return FileResponse(base_dir, media_type="image/png")
 
-    # Si no existe imagen → devolver 404 real
     log.info(
         CrearMsgLog(
             404,
@@ -625,6 +581,25 @@ def image_date(date: str, storm_name: str, hour: str):
         content=f"No tengo registro de tormenta {storm_name} el {date} en la hora {hour}",
         status_code=404
     )
+
+
+@app.get("/data_forecast/{date}/{storm_name}/{hour}")
+def get_data_storm(date: str, storm_name: str, hour: str):
+    try:
+        base_dir = os.path.join("data", date, storm_name, f"{hour}_forecast.png")
+
+        if os.path.exists(base_dir):
+            with open(base_dir, "r") as archivo:
+                data_storm = json.load(archivo)
+
+            log.info(CrearMsgLog(200, f"/data_forecast/{date}/{storm_name}/{hour}", "Successful request"))
+            return data_storm
+
+        return PlainTextResponse(content=f"No tengo registro de tormenta {storm_name} el {date}", status_code=404)
+        
+    except Exception as exc:
+        log.error(CrearMsgLog(500, f"data_forecast/{storm_name}", str(exc)))
+        return PlainTextResponse(content="Hubo un error al obtener la data de forecast", status_code=500)
 
 
 @app.get("/TraducirJson/{date}/{storm_name}/{hour}")

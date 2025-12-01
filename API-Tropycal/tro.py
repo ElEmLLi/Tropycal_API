@@ -586,7 +586,7 @@ def image_date(date: str, storm_name: str, hour: str):
 @app.get("/data_forecast/{date}/{storm_name}/{hour}")
 def get_data_storm(date: str, storm_name: str, hour: str):
     try:
-        base_dir = os.path.join("data", date, storm_name, f"{hour}_forecast.png")
+        base_dir = os.path.join("data", date, storm_name, f"{hour}_forecast.json")
 
         if os.path.exists(base_dir):
             with open(base_dir, "r") as archivo:

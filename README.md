@@ -1,7 +1,4 @@
-# 🌀 Tropycal_API: API para Tormentas Tropicales
-
-# Copyright (c) 2025
-# [Pedro Mendoza, Bruno Goñi, Emiliano Sánchez, Valentina Tejeda, Brisa León]
+# 🌀 Tropycal_API:
 
 ## 🚀 Introducción
 
